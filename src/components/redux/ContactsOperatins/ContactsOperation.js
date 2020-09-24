@@ -2,15 +2,17 @@ import TaskPhoneBook from "../TaskPhonebook";
 import Axios from "axios";
 Axios.defaults.baseURL = "https://goit-phonebook-api.herokuapp.com";
 
-const Token = (token) =>
-  (Axios.defaults.headers.common.Authorization = `Bearer ${token}`);
-const tokenUnset = () => (Axios.defaults.headers.common.Authorization = "");
+const Token = (token) => {
+  Axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
+const tokenUnset = () => {
+  Axios.defaults.headers.common.Authorization = "";
+};
 
 const registration = (user) => (dispatch) => {
   dispatch(TaskPhoneBook.registerRequest());
   Axios.post("/users/signup", user)
     .then((response) => {
-      console.log(response);
       Token(response.data.token);
       dispatch(TaskPhoneBook.loginSuccess(true));
       dispatch(TaskPhoneBook.registersSuccess({ ...response.data }));
@@ -22,9 +24,7 @@ const loginUser = (user) => (dispatch) => {
   dispatch(TaskPhoneBook.loginRequest());
   Axios.post("/users/login", user)
     .then((response) => {
-      console.log(response);
       Token(response.data.token);
-      dispatch(TaskPhoneBook.loginSuccess(true));
       dispatch(TaskPhoneBook.loginSuccess({ ...response.data }));
     })
     .catch((error) => dispatch(TaskPhoneBook.loginError(error.message)));
@@ -35,29 +35,25 @@ const getUser = () => (dispatch, getState) => {
     auth: { token: persistedtoken },
   } = getState();
   if (!persistedtoken) {
-    dispatch(TaskPhoneBook.loginSuccess(false));
     return;
   }
   Token(persistedtoken);
-  dispatch(TaskPhoneBook.loginSuccess(true));
   dispatch(TaskPhoneBook.getCurrentUserRequest());
 
   Axios.get("/users/current")
-    .then((response) => {
-      console.log("response");
-      dispatch(TaskPhoneBook.addContactsSuccess({ ...response.data }));
+    .then(({ data }) => {
+      dispatch(TaskPhoneBook.getCurrentUserSuccess(data));
     })
     .catch((error) =>
       dispatch(TaskPhoneBook.getCurrentUserError(error.message))
     );
 };
 
-const logoutUser = () => (dispatch) => {
+const logOutUser = () => (dispatch) => {
   dispatch(TaskPhoneBook.logoutRequest());
   Axios.post("/users/logout")
     .then(() => {
       tokenUnset();
-      dispatch(TaskPhoneBook.loginSuccess(false));
       dispatch(TaskPhoneBook.logoutSuccess());
     })
     .catch((error) => dispatch(TaskPhoneBook.logoutError(error.message)));
@@ -88,11 +84,12 @@ const removeContact = (id) => (dispatch) => {
     .then(() => dispatch(TaskPhoneBook.removeContactsSuccess(id)))
     .catch((error) => dispatch(TaskPhoneBook.removeContactsError()));
 };
+
 export default {
   registration,
   loginUser,
   getUser,
-  logoutUser,
+  logOutUser,
   addContacts,
   fetchContacts,
   removeContact,

@@ -5,20 +5,20 @@ import getstatus from "./components/redux/Selectors/ContactSelectors";
 
 const PrivateRoute = ({
   component: Component,
-  logIn,
-  redirectTo,
+  isAuthenticated,
+
   ...routeProps
 }) => (
   <Route
     {...routeProps}
     render={(props) =>
-      logIn ? <Component {...props} /> : <Redirect to={redirectTo} />
+      isAuthenticated ? <Component {...props} /> : <Redirect to={"/login"} />
     }
   />
 );
 
 const mapStateToProps = (state) => ({
-  logIn: getstatus.isAuthenticated(state),
+  isAuthenticated: getstatus.isAuthenticated(state),
 });
 
 export default connect(mapStateToProps)(PrivateRoute);

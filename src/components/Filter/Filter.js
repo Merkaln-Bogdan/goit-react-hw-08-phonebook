@@ -18,7 +18,7 @@ const Filter = ({ value, onChangeFilter }) => (
   </div>
 );
 const MapStateToProps = (state) => ({
-  value: state.actions.filter,
+  value: state.contacts.filter,
 });
 const MapDispatchToProps = {
   onChangeFilter: taskPhonebook.changeFilter,

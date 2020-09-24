@@ -1,0 +1,14 @@
+.WrapperUserMenu {
+  font-size: 25px;
+  margin-left: 30px;
+}
+.BlockName {
+  margin-left: 10px;
+}
+.ButtonLogOut {
+  margin-left: 20px;
+  border-radius: 5px;
+  font-size: 20px;
+  color: rgb(1, 1, 31);
+  background-color: rgb(186, 186, 216);
+}

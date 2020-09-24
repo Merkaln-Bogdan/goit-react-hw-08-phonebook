@@ -13,22 +13,19 @@ class RegisterForm extends Component {
     this.setState({ [name]: value });
   };
   handleSubmit = (e) => {
-    const { name, email, password, confirmPassword } = this.state;
+    e.preventDefault();
+    const { name, email, password } = this.state;
     const user = {
       name: name,
       email: email,
       password: password,
     };
-    // if (password !== confirmPassword) {
-    //   this.props.registerError("password is not valid");
-    //   return;
-    // } else {
+
+    this.props.registerError("password is not valid");
     this.props.onRegister(user);
-    // }
     this.setState({ ...this.state });
   };
 
-  // componentDidMount() {}
   render() {
     const { name, email, password } = this.state;
     return (
@@ -36,15 +33,15 @@ class RegisterForm extends Component {
         <br />
         <Row className="justify-content-md-center">
           <Col xs lg="5">
-            <h2>Registration</h2>
+            <h2>Регистрация</h2>
             <Form type="form">
               <Form.Group controlId="firstName">
-                <Form.Label>Name</Form.Label>
+                <Form.Label>имя</Form.Label>
                 <Form.Control
                   type="name"
                   name="name"
                   value={name}
-                  placeholder="Name"
+                  placeholder="Имя"
                   onChange={this.handleChange}
                 />
               </Form.Group>
@@ -56,19 +53,19 @@ class RegisterForm extends Component {
                   type="email"
                   name="email"
                   value={email}
-                  placeholder="Enter email"
+                  placeholder="введите email"
                   onChange={this.handleChange}
                 />
               </Form.Group>
               <Form.Group controlId="password">
-                <Form.Label>Password</Form.Label>
+                <Form.Label>Пароль</Form.Label>
                 <Form.Control
                   suggested="password"
                   autoComplete="new-password"
                   type="password"
                   name="password"
                   value={password}
-                  placeholder="Password"
+                  placeholder="пароль"
                   onChange={this.handleChange}
                 />
               </Form.Group>
@@ -78,7 +75,7 @@ class RegisterForm extends Component {
                 type="button"
                 onClick={this.handleSubmit}
               >
-                Submit
+                РЕГИСТРАЦИЯ
               </Button>
             </Form>
           </Col>
@@ -89,5 +86,4 @@ class RegisterForm extends Component {
 }
 export default connect(null, {
   onRegister: ContactsOperatins.registration,
-  // registerError: authOperation.registration.registerError,
 })(RegisterForm);

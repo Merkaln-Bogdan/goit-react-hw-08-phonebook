@@ -2,12 +2,16 @@ import React, { Component } from "react";
 import style from "../Phonebook/PhoneBook.module.css";
 import alertSlideTransition from "../../stylesTransition/AlertTransition.module.css";
 import { connect } from "react-redux";
-import ContactsOperatins from "../redux/ContactsOperatins/ContactsOperation";
+import ContactsOperations from "../redux/ContactsOperatins/ContactsOperation";
 import ContactSelector from "../redux/Selectors/ContactSelectors";
 import AlertWindow from "../AlertWindow/AlertWindow";
 import { CSSTransition } from "react-transition-group";
 class PhonebookEditor extends Component {
   state = { name: "", number: "", alertName: null };
+
+  componentDidMount() {
+    this.props.onFetchContacts();
+  }
   handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
@@ -86,6 +90,7 @@ const MapStateToProps = (state) => ({
 });
 
 const MapDispatchToProps = {
-  addContacts: ContactsOperatins.addContacts,
+  addContacts: ContactsOperations.addContacts,
+  onFetchContacts: ContactsOperations.fetchContacts,
 };
 export default connect(MapStateToProps, MapDispatchToProps)(PhonebookEditor);

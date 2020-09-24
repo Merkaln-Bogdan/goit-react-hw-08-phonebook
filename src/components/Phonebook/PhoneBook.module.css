@@ -2,12 +2,18 @@
   padding-right: 10px;
 }
 .title {
-  margin: 20px;
+  margin: 40px;
   font-family: "Roboto", sans-serif;
   color: rgb(4, 4, 194);
   font-size: 60px;
+  font-weight: bold;
 }
-
+.TitleContacts {
+  font-size: 40px;
+  font-weight: bold;
+  margin-left: 20px;
+  color: rgb(63, 63, 163);
+}
 .form {
   position: relative;
   font-family: "Roboto", sans-serif;
@@ -19,27 +25,24 @@
   margin: 20px;
 }
 .buttonAdd {
-  position: absolute;
+  position: inherit;
   color: white;
   width: 94%;
   height: 70px;
   font-size: 20px;
-  background-color: blue;
+  background-color: rgb(33, 33, 184);
   border-radius: 5px;
-  bottom: 10px;
+  margin-top: 20px;
 }
 .inputField {
   display: block;
-  margin: 15px;
-  width: 70%;
+  width: 85%;
   height: 50px;
   font-size: 35px;
   border: 2px solid rgb(10, 10, 54);
   border-radius: 5px;
 }
-input :focus {
-  border: 5px solid blue;
-}
+
 .wrapperFilter {
   font-family: "Roboto", sans-serif;
   width: 50%;
@@ -60,4 +63,5 @@ input :focus {
 }
 .contactList {
   padding: 0;
+  margin-left: 40px;
 }

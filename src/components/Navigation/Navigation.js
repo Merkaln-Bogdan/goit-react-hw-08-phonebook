@@ -1,14 +1,12 @@
 import React from "react";
-
 import { NavLink } from "react-router-dom";
-
 import { connect } from "react-redux";
 import getStatusLogIn from "../redux/Selectors/ContactSelectors";
 
 const Navigation = () => (
   <>
     <NavLink to="/" exact>
-      Home
+      Главная
     </NavLink>
     <br />
     <NavLink to="/login" exact>
@@ -16,11 +14,11 @@ const Navigation = () => (
     </NavLink>
     <br />
     <NavLink to="/registration" exact>
-      Registration
+      Регистрация
     </NavLink>
     <br />
     <NavLink to="/contacts" exact>
-      Contacts
+      Контакты
     </NavLink>
   </>
 );

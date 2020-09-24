@@ -1,5 +1,5 @@
 import React, { Component, Suspense } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import routes from "./routes";
 import ContactsOperations from "./components/redux/ContactsOperatins/ContactsOperation";
 import ContactSelector from "./components/redux/Selectors/ContactSelectors";
@@ -11,41 +11,36 @@ import LoginForm from "./components/LoginForm/LoginForm";
 import { Home } from "./components/HomePage/Homepage";
 import Navigation from "./components/Navigation/Navigation";
 import Phonebook from "./components/Phonebook/Phonebook";
+import UserMenu from "./components/UserMenu/UserMenu";
+import style from "./App.module.css";
 class App extends Component {
   componentDidMount() {
     this.props.onGetUser();
-    this.props.onFetchContacts();
-  }
-  componentDidUpdate() {
-    if (this.props.message) {
-      return setTimeout(() => {
-        this.props.registrationError(null);
-      }, 3000);
-    }
   }
   render() {
     return (
       <>
-        <Navigation />
+        <div className={style.Navigation}>
+          <Navigation />
+          {this.props.isAuthenticated && <UserMenu />}
+        </div>
         <Suspense fallback={<div>...Loading</div>}>
           <Switch>
-            <Route path={routes.home} exact component={Home} />
             <PublicRoute
               path={routes.home}
+              restricted={false}
               exact
-              restricted
-              redirectTo={routes.contacts}
-              component={"logIn ? UserPage : StartPage"}
+              component={Home}
             />
             <PublicRoute
               path={routes.login}
-              restricted={false}
+              restricted={true}
               redirectTo={routes.LoginForm}
               component={LoginForm}
             />
             <PublicRoute
               path={routes.register}
-              restricted={false}
+              restricted={true}
               redirectTo={routes.register}
               component={RegisterForm}
             />
@@ -55,12 +50,6 @@ class App extends Component {
               redirectTo={routes.login}
               component={Phonebook}
             />
-            {/* <PrivateRoute
-            path={routes.logout}
-            redirectTo={routes.login}
-            component={LogOut}
-          /> */}
-            {/* <Redirect to={routes.home} /> */}
           </Switch>
         </Suspense>
       </>
@@ -69,9 +58,10 @@ class App extends Component {
 }
 const MapStateToProps = (state) => ({
   contacts: ContactSelector.visibleContacts(state),
+  isAuthenticated: ContactSelector.isAuthenticated(state),
 });
 const MapDispatchToProps = {
-  onFetchContacts: ContactsOperations.fetchContacts,
-  onGetUser: ContactsOperations.registration,
+  onGetUser: ContactsOperations.getUser,
 };
+
 export default connect(MapStateToProps, MapDispatchToProps)(App);

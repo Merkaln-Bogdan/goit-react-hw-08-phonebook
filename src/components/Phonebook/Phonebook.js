@@ -27,7 +27,7 @@ function Phonebook({ contacts, onRemovePersonData }) {
         </CSSTransition>
       </div>
       <div className={style.phoneList}>
-        <h2>Контакты</h2>
+        <h2 className={style.TitleContacts}>Контакты</h2>
 
         <PhonebookEditor />
         {contacts.length > 0 ? (
@@ -40,7 +40,7 @@ function Phonebook({ contacts, onRemovePersonData }) {
             <Filter />
           </CSSTransition>
         ) : (
-          <h2>Нет контактов</h2>
+          <h2 className={style.TitleContacts}>Нет контактов</h2>
         )}
         <TransitionGroup component="ul" className={style.contactList}>
           {contacts.map((contact) => (
