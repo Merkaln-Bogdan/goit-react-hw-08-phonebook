@@ -1,7 +1,7 @@
 import { createAction } from "@reduxjs/toolkit";
-const registerRequest = createAction("contacts/registerRequest");
+const registersRequest = createAction("contacts/registerRequest");
 const registersSuccess = createAction("contacts/registerSuccess");
-const registerError = createAction("contacts/registerError");
+const registersError = createAction("contacts/registerError");
 
 const loginRequest = createAction("contacts/loginRequest");
 const loginSuccess = createAction("contacts/loginSuccess");
@@ -30,9 +30,9 @@ const removeContactsError = createAction("contacts/removeError");
 const changeFilter = createAction("contacts/filter");
 
 export default {
-  registerRequest,
+  registersRequest,
   registersSuccess,
-  registerError,
+  registersError,
   loginRequest,
   loginSuccess,
   loginError,

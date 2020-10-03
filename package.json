@@ -2,6 +2,11 @@
   "name": "goit-react-hw-08-phonebook",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://Merkaln-Bogdan.github.io/goit-react-hw-08-phonebook",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Merkaln-Bogdangoit-react-hw-08-phonebook"
+  },
   "dependencies": {
     "@reduxjs/toolkit": "^1.4.0",
     "@testing-library/jest-dom": "^4.2.4",
@@ -9,7 +14,6 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.20.0",
     "bootstrap": "^4.5.2",
-    "gh-pages": "^3.1.0",
     "react": "^16.13.1",
     "react-bootstrap": "^1.3.0",
     "react-dom": "^16.13.1",
@@ -26,7 +30,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"

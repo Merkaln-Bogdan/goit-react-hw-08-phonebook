@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ContactsOperatins from "../redux/ContactsOperatins/ContactsOperation";
+import TaskPhonebook from "../redux/TaskPhonebook";
 class RegisterForm extends Component {
   state = {
     name: "",
@@ -21,9 +22,12 @@ class RegisterForm extends Component {
       password: password,
     };
 
-    this.props.registerError("password is not valid");
-    this.props.onRegister(user);
-    this.setState({ ...this.state });
+    if (this.props.onRegister) {
+      this.props.onRegister(user);
+      this.setState({ ...this.state });
+    } else {
+      alert("пароль или email не действительны!");
+    }
   };
 
   render() {
@@ -86,4 +90,5 @@ class RegisterForm extends Component {
 }
 export default connect(null, {
   onRegister: ContactsOperatins.registration,
+  registersError: TaskPhonebook.registersError,
 })(RegisterForm);
