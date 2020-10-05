@@ -10,8 +10,12 @@ class PhonebookEditor extends Component {
   state = { name: "", number: "", alertName: null };
 
   componentDidMount() {
-    this.props.onFetchContacts();
+    if (this.props.isAuthenticated) {
+      this.props.onGetUser();
+      this.props.onFetchContacts();
+    }
   }
+
   handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
@@ -87,10 +91,13 @@ class PhonebookEditor extends Component {
 }
 const MapStateToProps = (state) => ({
   contacts: ContactSelector.visibleContacts(state),
+  contactsState: ContactSelector.getContacts(state),
+  isAuthenticated: ContactSelector.isAuthenticated(state),
 });
 
 const MapDispatchToProps = {
   addContacts: ContactsOperations.addContacts,
   onFetchContacts: ContactsOperations.fetchContacts,
+  onGetUser: ContactsOperations.getUser,
 };
 export default connect(MapStateToProps, MapDispatchToProps)(PhonebookEditor);

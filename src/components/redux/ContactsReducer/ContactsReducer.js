@@ -17,7 +17,7 @@ const filter = (state = "", { type, payload }) => {
     case TaskPhonebook.changeFilter.type:
       return payload;
     default:
-      return state;
+      return (state = "");
   }
 };
 
