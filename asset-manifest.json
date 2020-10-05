@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/goit-react-hw-08-phonebook/static/css/main.afb0e0a6.chunk.css",
-    "main.js": "/goit-react-hw-08-phonebook/static/js/main.2fd66138.chunk.js",
-    "main.js.map": "/goit-react-hw-08-phonebook/static/js/main.2fd66138.chunk.js.map",
+    "main.css": "/goit-react-hw-08-phonebook/static/css/main.c704b664.chunk.css",
+    "main.js": "/goit-react-hw-08-phonebook/static/js/main.37d5d276.chunk.js",
+    "main.js.map": "/goit-react-hw-08-phonebook/static/js/main.37d5d276.chunk.js.map",
     "runtime-main.js": "/goit-react-hw-08-phonebook/static/js/runtime-main.650e6e2b.js",
     "runtime-main.js.map": "/goit-react-hw-08-phonebook/static/js/runtime-main.650e6e2b.js.map",
     "static/css/2.d9ad5f5c.chunk.css": "/goit-react-hw-08-phonebook/static/css/2.d9ad5f5c.chunk.css",
     "static/js/2.edee93b8.chunk.js": "/goit-react-hw-08-phonebook/static/js/2.edee93b8.chunk.js",
     "static/js/2.edee93b8.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/2.edee93b8.chunk.js.map",
     "index.html": "/goit-react-hw-08-phonebook/index.html",
-    "precache-manifest.a222590b5dbfbb4527efff8507ab5941.js": "/goit-react-hw-08-phonebook/precache-manifest.a222590b5dbfbb4527efff8507ab5941.js",
+    "precache-manifest.cb8b7fca5038ff6fd00015e3bb3e4a4f.js": "/goit-react-hw-08-phonebook/precache-manifest.cb8b7fca5038ff6fd00015e3bb3e4a4f.js",
     "service-worker.js": "/goit-react-hw-08-phonebook/service-worker.js",
     "static/css/2.d9ad5f5c.chunk.css.map": "/goit-react-hw-08-phonebook/static/css/2.d9ad5f5c.chunk.css.map",
-    "static/css/main.afb0e0a6.chunk.css.map": "/goit-react-hw-08-phonebook/static/css/main.afb0e0a6.chunk.css.map",
+    "static/css/main.c704b664.chunk.css.map": "/goit-react-hw-08-phonebook/static/css/main.c704b664.chunk.css.map",
     "static/js/2.edee93b8.chunk.js.LICENSE.txt": "/goit-react-hw-08-phonebook/static/js/2.edee93b8.chunk.js.LICENSE.txt",
     "static/media/logout.png": "/goit-react-hw-08-phonebook/static/media/logout.3b704aed.png",
     "static/media/png-avatar.png": "/goit-react-hw-08-phonebook/static/media/png-avatar.54e9ec53.png"
@@ -21,7 +21,7 @@
     "static/js/runtime-main.650e6e2b.js",
     "static/css/2.d9ad5f5c.chunk.css",
     "static/js/2.edee93b8.chunk.js",
-    "static/css/main.afb0e0a6.chunk.css",
-    "static/js/main.2fd66138.chunk.js"
+    "static/css/main.c704b664.chunk.css",
+    "static/js/main.37d5d276.chunk.js"
   ]
 }
