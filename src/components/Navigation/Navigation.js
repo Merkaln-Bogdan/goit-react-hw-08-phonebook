@@ -2,9 +2,9 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import getStatusLogIn from "../redux/Selectors/ContactSelectors";
-
+import style from "./Navigation.module.css"
 const Navigation = () => (
-  <>
+  <div className={style.wrapper}>
     <NavLink to="/" exact>
       Главная
     </NavLink>
@@ -20,7 +20,7 @@ const Navigation = () => (
     <NavLink to="/contacts" exact>
       Контакты
     </NavLink>
-  </>
+  </div>
 );
 const mapStateToProps = (state) => {
   return {

@@ -1,8 +1,18 @@
-.Navigation {
-  font-size: 30px;
-  display: flex;
-  width: 85%;
-  justify-content: space-between;
-  margin: 0 auto;
-  margin-top: 40px;
+
+  .navigation {
+    display: block;
+    font-size: 30px;
+    margin: 0 auto;
+    margin: 20px;
+  }
+
+@media (min-width: 767px){
+  .navigation {
+    display: flex;
+    /* justify-content: space-between; */
+    font-size: 30px;
+    width: 85%;
+    margin: 0 auto;
+    margin-top: 40px;
+  }
 }

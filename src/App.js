@@ -20,7 +20,7 @@ class App extends Component {
   render() {
     return (
       <>
-        <div className={style.Navigation}>
+        <div className={style.navigation}>
           <Navigation />
           {this.props.isAuthenticated && <UserMenu />}
         </div>
