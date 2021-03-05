@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./Registerform.css"
 import ContactsOperatins from "../redux/ContactsOperatins/ContactsOperation";
 import TaskPhonebook from "../redux/TaskPhonebook";
 class RegisterForm extends Component {
@@ -33,7 +34,7 @@ class RegisterForm extends Component {
   render() {
     const { name, email, password } = this.state;
     return (
-      <Container>
+      <Container className="container">
         <br />
         <Row className="justify-content-md-center">
           <Col xs lg="5">

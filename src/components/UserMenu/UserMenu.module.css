@@ -1,14 +1,32 @@
 .WrapperUserMenu {
-  font-size: 25px;
-  margin-left: 30px;
+position: absolute;
+text-align: center;
+right: 0;
+font-size: 11px;
+margin-left: 30px;
+width: 158px;
 }
 .BlockName {
   margin-left: 10px;
 }
 .ButtonLogOut {
-  margin-left: 20px;
-  border-radius: 5px;
+  float: left;
+  margin: 7px;
   font-size: 20px;
   color: rgb(1, 1, 31);
   background-color: rgb(186, 186, 216);
+}
+@media (min-width: 767px){
+.WrapperUserMenu {
+  position: inherit;
+  text-align: center;
+  width: auto;
+  font-size: 25px;
+  margin-left: 30px;
+}
+.ButtonLogOut {
+  margin-left: 20px;
+  float: unset;
+  font-size: 20px;
+}
 }

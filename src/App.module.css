@@ -9,7 +9,6 @@
 @media (min-width: 767px){
   .navigation {
     display: flex;
-    /* justify-content: space-between; */
     font-size: 30px;
     width: 85%;
     margin: 0 auto;
