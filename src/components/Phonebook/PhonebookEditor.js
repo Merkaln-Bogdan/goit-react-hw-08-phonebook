@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import style from "../Phonebook/PhoneBook.module.css";
 import alertSlideTransition from "../../stylesTransition/AlertTransition.module.css";
 import { connect } from "react-redux";
-import ContactsOperations from "../redux/ContactsOperatins/ContactsOperation";
+import ContactsOperations from "../redux/ContactsOperations/ContactsOperation";
 import ContactSelector from "../redux/Selectors/ContactSelectors";
 import AlertWindow from "../AlertWindow/AlertWindow";
 import { CSSTransition } from "react-transition-group";

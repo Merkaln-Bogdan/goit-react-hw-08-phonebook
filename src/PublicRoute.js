@@ -13,7 +13,7 @@ const PublicRoute = ({
     {...routeProps}
     render={(props) =>
       isAuthenticated && restricted ? (
-        <Redirect to={"/contacts"} />
+        <Redirect to={"/api/contacts"} />
       ) : (
         <Component {...props} />
       )

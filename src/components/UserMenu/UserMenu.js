@@ -1,30 +1,71 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
-import ContactsOperation from "../redux/ContactsOperatins/ContactsOperation";
+import ContactsOperation from "../redux/ContactsOperations/ContactsOperation";
 import ContactSelectors from "../redux/Selectors/ContactSelectors";
-import defaultAvatar from "./png-avatar.png";
-import logOutButton from "./logout.png";
+import defaultAvatar from "../../assets/png-avatar.png";
+
+import logOutButton from "../../assets/logout.png";
 import style from "./UserMenu.module.css";
-const UserMenu = ({ avatar, logOut, name }) => (
-  <div className={style.WrapperUserMenu}>
-    <img
-      className={style.Avatar}
-      src={avatar}
-      width="40"
-      height="40"
-      alt="user-avatar"
-    />
-    <span className={style.BlockName}>Добро пожаловать, {name}</span>
-    <button className={style.ButtonLogOut} type="button" onClick={logOut}>
-      <img src={logOutButton} alt="logout button " width="20" />
-    </button>
-  </div>
-);
+
+class UserMenu extends Component {
+  state = {
+    currentFile: undefined,
+    previewImage: undefined,
+  };
+
+  selectFile = (event) => {
+    this.setState({
+      currentFile: event.target.files[0],
+      previewImage: URL.createObjectURL(event.target.files[0]),
+      progress: 0,
+      message: "",
+    });
+  };
+
+  render() {
+    const { name, logOut, avatar, changeAvatar } = this.props;
+    const { previewImage, currentFile } = this.state;
+
+    return (
+      <div className={style.WrapperUserMenu}>
+        <div className={style.WrapperAvatar}>
+          {previewImage ||
+            (avatar && (
+              <img
+                className={style.Avatar}
+                src={previewImage || avatar || defaultAvatar}
+                alt="avatar"
+                width={100}
+                height={100}
+              />
+            ))}
+          <input
+            type="file"
+            name="avatar"
+            onChange={this.selectFile}
+            className={style.InputAvatar}
+          />
+        </div>
+        {previewImage && (
+          <button type="button" onClick={() => changeAvatar(currentFile)}>
+            Upload
+          </button>
+        )}
+
+        <span className={style.BlockName}>Добро пожаловать, {name}</span>
+        <button className={style.ButtonLogOut} type="button" onClick={logOut}>
+          <img src={logOutButton} alt="logout button " width="20" />
+        </button>
+      </div>
+    );
+  }
+}
 const mapStateToProps = (state) => ({
   name: ContactSelectors.getUserName(state),
-  avatar: defaultAvatar,
+  avatar: ContactSelectors.getAvatar(state),
 });
 const MapDispatchToProps = {
   logOut: ContactsOperation.logOutUser,
+  changeAvatar: ContactsOperation.createUserAvatar,
 };
 export default connect(mapStateToProps, MapDispatchToProps)(UserMenu);

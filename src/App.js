@@ -1,7 +1,7 @@
 import React, { Component, Suspense } from "react";
 import { Switch } from "react-router-dom";
 import routes from "./routes";
-import ContactsOperations from "./components/redux/ContactsOperatins/ContactsOperation";
+import ContactsOperations from "./components/redux/ContactsOperations/ContactsOperation";
 import ContactSelector from "./components/redux/Selectors/ContactSelectors";
 import { connect } from "react-redux";
 import PublicRoute from "./PublicRoute";
@@ -13,6 +13,9 @@ import Navigation from "./components/Navigation/Navigation";
 import Phonebook from "./components/Phonebook/Phonebook";
 import UserMenu from "./components/UserMenu/UserMenu";
 import style from "./App.module.css";
+
+// The app will be update and rewritten a little bit later with hooks and new features of React
+
 class App extends Component {
   componentDidMount() {
     this.props.onGetUser();

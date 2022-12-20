@@ -3,6 +3,7 @@ const isAuthenticated = (state) => state.auth.token;
 const getUserName = (state) => state.auth.user.name;
 const getContacts = (state) => state.contacts.item;
 const getStatusLogIn = (state) => state.auth.loginUser;
+const getAvatar = (state) => state.auth.user.avatarURL;
 const getFilter = (state) => state.contacts.filter;
 const visibleContacts = createSelector(
   [getContacts, getFilter],
@@ -16,6 +17,7 @@ const visibleContacts = createSelector(
 export default {
   isAuthenticated,
   getContacts,
+  getAvatar,
   getUserName,
   getFilter,
   getStatusLogIn,

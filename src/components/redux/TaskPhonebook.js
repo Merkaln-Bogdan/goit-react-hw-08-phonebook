@@ -27,6 +27,14 @@ const removeContactsRequest = createAction("contacts/removeRequest");
 const removeContactsSuccess = createAction("contacts/removeSuccess");
 const removeContactsError = createAction("contacts/removeError");
 
+const changeUserAvatarRequest = createAction(
+  "contacts/changeUserAvatarRequest"
+);
+const changeUserAvatarSuccess = createAction(
+  "contacts/changeUserAvatarSuccess"
+);
+const changeUserAvatarError = createAction("contacts/changeUserAvatarError");
+
 const changeFilter = createAction("contacts/filter");
 
 export default {
@@ -51,5 +59,8 @@ export default {
   removeContactsRequest,
   removeContactsSuccess,
   removeContactsError,
+  changeUserAvatarRequest,
+  changeUserAvatarSuccess,
+  changeUserAvatarError,
   changeFilter,
 };

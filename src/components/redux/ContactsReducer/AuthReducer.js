@@ -4,6 +4,8 @@ import { createReducer } from "@reduxjs/toolkit";
 const initialUserState = {
   name: null,
   email: null,
+  subscription: null,
+  avatarURL: null,
 };
 const user = createReducer(initialUserState, {
   [TaskPhonebook.registersSuccess]: (_, { payload }) => payload.user,

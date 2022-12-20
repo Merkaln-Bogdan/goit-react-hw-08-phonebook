@@ -8,10 +8,8 @@
   box-shadow: 5px 5px 5px 5px rgba(29, 29, 87, 0.2);
 }
 .dataPerson {
-  font-size: 25px;
   display: grid;
-  width: 300px;
-  height: 62px;
+  min-width: 40%;
 }
 .buttonRemove {
   width: 50px;
@@ -26,14 +24,12 @@
 button:hover {
   background-color: rgb(216, 150, 7);
 }
-@media (min-width: 767px){
+@media (min-width: 767px) {
   .listItem {
-    line-height: 2;
     letter-spacing: 2px;
-    width: 60%;
+    width: 70%;
   }
   .dataPerson {
     font-size: 30px;
-    height: 50px;
   }
 }

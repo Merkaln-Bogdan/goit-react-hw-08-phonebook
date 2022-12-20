@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import ContactsOperation from "../redux/ContactsOperatins/ContactsOperation";
+import ContactsOperation from "../redux/ContactsOperations/ContactsOperation";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 

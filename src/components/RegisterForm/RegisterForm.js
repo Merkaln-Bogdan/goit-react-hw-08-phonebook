@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./Registerform.css"
-import ContactsOperatins from "../redux/ContactsOperatins/ContactsOperation";
+import "./Registerform.css";
+import ContactsOperatins from "../redux/ContactsOperations/ContactsOperation";
 import TaskPhonebook from "../redux/TaskPhonebook";
 class RegisterForm extends Component {
   state = {

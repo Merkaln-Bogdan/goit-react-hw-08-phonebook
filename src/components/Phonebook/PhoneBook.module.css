@@ -56,39 +56,39 @@
   margin: 20px;
 }
 .contactList {
+  display: flex;
+  flex-direction: column-reverse;
   padding: 0;
 }
 
-@media (min-width: 767px){
-.wrapper {
-  padding-right: 10px;
-}
+@media (min-width: 767px) {
+  .wrapper {
+    padding-right: 10px;
+  }
 
-.form {
-  margin: 20px;
-  width: 50%;
+  .form {
+    margin: 20px;
+    width: 50%;
+  }
 
-}
+  .inputField {
+    width: 85%;
+    font-size: 35px;
+  }
 
-.inputField {
-  width: 85%;
-  font-size: 35px;
-}
-
-.wrapperFilter {
-  margin-left: 20px;
-  width: 50%;
-
-}
-.labelMarkup {
-  font-size: 30px;
-  margin: 5px;
-}
-.phoneList {
-  font-size: 30px;
-}
-.contactList {
-  padding: 0;
-  margin-left: 40px;
-}
+  .wrapperFilter {
+    margin-left: 20px;
+    width: 50%;
+  }
+  .labelMarkup {
+    font-size: 30px;
+    margin: 5px;
+  }
+  .phoneList {
+    font-size: 30px;
+  }
+  .contactList {
+    padding: 0;
+    margin-left: 40px;
+  }
 }

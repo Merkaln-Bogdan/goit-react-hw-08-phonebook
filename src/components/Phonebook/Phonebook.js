@@ -9,7 +9,7 @@ import TitleSlideTransition from "../../stylesTransition/TitleSlideTransition.mo
 import ContactSelector from "../redux/Selectors/ContactSelectors";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import ContactOperations from "../redux/ContactsOperatins/ContactsOperation";
+import ContactOperations from "../redux/ContactsOperations/ContactsOperation";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 function Phonebook({ contacts, onRemovePersonData }) {
@@ -45,16 +45,20 @@ function Phonebook({ contacts, onRemovePersonData }) {
         <TransitionGroup component="ul" className={style.contactList}>
           {contacts.map((contact) => (
             <CSSTransition
-              key={contact.id}
+              key={contact._id}
               timeout={300}
               classNames={slideTransition}
             >
-              <PhonebookListItem
-                key={contact.id}
-                name={contact.name}
-                number={contact.number}
-                onRemovePersonData={() => onRemovePersonData(contact.id)}
-              />
+              {!contacts ? (
+                <>Loading</>
+              ) : (
+                <PhonebookListItem
+                  key={contact._id}
+                  name={contact.name}
+                  number={contact.number}
+                  onRemovePersonData={() => onRemovePersonData(contact._id)}
+                />
+              )}
             </CSSTransition>
           ))}
         </TransitionGroup>

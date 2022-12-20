@@ -2,22 +2,22 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import getStatusLogIn from "../redux/Selectors/ContactSelectors";
-import style from "./Navigation.module.css"
+import style from "./Navigation.module.css";
 const Navigation = () => (
   <div className={style.wrapper}>
     <NavLink to="/" exact>
       Главная
     </NavLink>
     <br />
-    <NavLink to="/login" exact>
-      LogIn
+    <NavLink to="/auth/signin" exact>
+      Войти
     </NavLink>
     <br />
-    <NavLink to="/registration" exact>
+    <NavLink to="/auth/register" exact>
       Регистрация
     </NavLink>
     <br />
-    <NavLink to="/contacts" exact>
+    <NavLink to="/api/contacts" exact>
       Контакты
     </NavLink>
   </div>

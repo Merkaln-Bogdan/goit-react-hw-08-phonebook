@@ -1,32 +1,59 @@
 .WrapperUserMenu {
-position: absolute;
-text-align: center;
-right: 0;
-font-size: 11px;
-margin-left: 30px;
-width: 158px;
+  position: absolute;
+  text-align: center;
+  right: 0;
+  font-size: 11px;
+  margin-left: 30px;
+  width: 158px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .BlockName {
   margin-left: 10px;
 }
 .ButtonLogOut {
-  float: left;
   margin: 7px;
   font-size: 20px;
   color: rgb(1, 1, 31);
   background-color: rgb(186, 186, 216);
+  border-radius: 9999px;
 }
-@media (min-width: 767px){
-.WrapperUserMenu {
-  position: inherit;
-  text-align: center;
-  width: auto;
-  font-size: 25px;
-  margin-left: 30px;
+
+.WrapperAvatar {
+  width: 100px;
+  height: 100px;
+  position: relative;
 }
-.ButtonLogOut {
-  margin-left: 20px;
-  float: unset;
-  font-size: 20px;
+
+.InputAvatar {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  right: 0;
+  top: 0;
+
+  opacity: 0;
 }
+
+.Avatar {
+  display: block;
+  border-radius: 9999px;
+}
+
+@media (min-width: 767px) {
+  .WrapperUserMenu {
+    position: inherit;
+    flex-direction: inherit;
+    text-align: center;
+
+    margin: 0 20px;
+  }
+  .ButtonLogOut {
+    margin-left: 20px;
+
+    font-size: 20px;
+  }
 }

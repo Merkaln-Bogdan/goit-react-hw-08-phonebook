@@ -1,7 +1,7 @@
 export default {
   home: "/",
-  login: "/login",
-  register: "/registration",
-  contacts: "/contacts",
+  login: "/auth/signin",
+  register: "/auth/register",
+  contacts: "/api/contacts",
   logout: "/logout",
 };
