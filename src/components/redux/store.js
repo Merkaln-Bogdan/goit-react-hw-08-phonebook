@@ -1,5 +1,5 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import ContactsReducer from "./ContactsReducer/ContactsReducer";
+import ContactsReducer from "./Reducers/ContactsReducer";
 import storage from "redux-persist/lib/storage";
 import {
   persistStore,
@@ -11,7 +11,7 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import AuthReducer from "./ContactsReducer/AuthReducer";
+import AuthReducer from "./Reducers/AuthReducer";
 
 const authPersistConfig = {
   key: "auth",

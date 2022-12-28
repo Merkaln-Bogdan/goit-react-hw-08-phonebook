@@ -3,8 +3,9 @@ import { connect } from "react-redux";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Registerform.css";
-import ContactsOperatins from "../redux/ContactsOperations/ContactsOperation";
 import TaskPhonebook from "../redux/TaskPhonebook";
+import UserOperation from "../redux/Operations/UserOperation";
+
 class RegisterForm extends Component {
   state = {
     name: "",
@@ -90,6 +91,6 @@ class RegisterForm extends Component {
   }
 }
 export default connect(null, {
-  onRegister: ContactsOperatins.registration,
+  onRegister: UserOperation.registration,
   registersError: TaskPhonebook.registersError,
 })(RegisterForm);

@@ -1,7 +1,7 @@
 import TaskPhoneBook from "../TaskPhonebook";
 import Axios from "axios";
-Axios.defaults.baseURL = "http://localhost:4040";
-// Axios.defaults.baseURL = "https://phonebook-api-v1.onrender.com";
+
+Axios.defaults.baseURL = "https://phonebook-api-v1.onrender.com";
 
 const Token = (token) => {
   Axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -78,40 +78,10 @@ const createUserAvatar = (file) => (dispatch) => {
     );
 };
 
-const addContacts = (name, number) => (dispatch) => {
-  dispatch(TaskPhoneBook.addContactsRequest());
-  Axios.post("/api/contacts", {
-    name,
-    number,
-  })
-    .then((response) =>
-      dispatch(TaskPhoneBook.addContactsSuccess(response.data))
-    )
-    .catch((error) => dispatch(TaskPhoneBook.addContactsError()));
-};
-const fetchContacts = () => (dispatch) => {
-  dispatch(TaskPhoneBook.fetchContactsRequest());
-  Axios.get("/api/contacts")
-    .then((response) =>
-      dispatch(TaskPhoneBook.fetchContactsSuccess(response.data))
-    )
-    .catch((error) => dispatch(TaskPhoneBook.fetchContactsError()));
-};
-const removeContact = (id) => (dispatch) => {
-  dispatch(TaskPhoneBook.removeContactsRequest());
-  Axios.delete(`/api/contacts/${id}`)
-    .then(() => dispatch(TaskPhoneBook.removeContactsSuccess(id)))
-    .then(() => dispatch(fetchContacts()))
-    .catch((error) => dispatch(TaskPhoneBook.removeContactsError()));
-};
-
 export default {
   registration,
   loginUser,
   getUser,
   logOutUser,
-  addContacts,
-  fetchContacts,
-  removeContact,
   createUserAvatar,
 };

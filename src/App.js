@@ -1,7 +1,7 @@
 import React, { Component, Suspense } from "react";
 import { Switch } from "react-router-dom";
 import routes from "./routes";
-import ContactsOperations from "./components/redux/ContactsOperations/ContactsOperation";
+import UserOperations from "./components/redux/Operations/UserOperation";
 import ContactSelector from "./components/redux/Selectors/ContactSelectors";
 import { connect } from "react-redux";
 import PublicRoute from "./PublicRoute";
@@ -64,7 +64,7 @@ const MapStateToProps = (state) => ({
   isAuthenticated: ContactSelector.isAuthenticated(state),
 });
 const MapDispatchToProps = {
-  onGetUser: ContactsOperations.getUser,
+  onGetUser: UserOperations.getUser,
 };
 
 export default connect(MapStateToProps, MapDispatchToProps)(App);

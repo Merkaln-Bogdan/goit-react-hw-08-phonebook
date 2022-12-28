@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import ContactsOperation from "../redux/ContactsOperations/ContactsOperation";
+import ContactsOperation from "../redux/Operations/ContactsOperations";
 import ContactSelectors from "../redux/Selectors/ContactSelectors";
 
 import defaultAvatar from "../../assets/pngavatar.png";
@@ -8,6 +8,7 @@ import defaultAvatar from "../../assets/pngavatar.png";
 import logOutButton from "../../assets/logout.png";
 
 import style from "./UserMenu.module.css";
+import UserOperation from "../redux/Operations/UserOperation";
 
 class UserMenu extends Component {
   state = {
@@ -64,7 +65,7 @@ const mapStateToProps = (state) => ({
   avatar: ContactSelectors.getAvatar(state),
 });
 const MapDispatchToProps = {
-  logOut: ContactsOperation.logOutUser,
+  logOut: UserOperation.logOutUser,
   changeAvatar: ContactsOperation.createUserAvatar,
 };
 export default connect(mapStateToProps, MapDispatchToProps)(UserMenu);

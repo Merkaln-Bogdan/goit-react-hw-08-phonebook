@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import ContactsOperation from "../redux/ContactsOperations/ContactsOperation";
+
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import UserOperation from "../redux/Operations/UserOperation";
 
 class LoginForm extends Component {
   state = {
@@ -71,5 +72,5 @@ class LoginForm extends Component {
   }
 }
 export default connect(null, {
-  onLogin: ContactsOperation.loginUser,
+  onLogin: UserOperation.loginUser,
 })(LoginForm);

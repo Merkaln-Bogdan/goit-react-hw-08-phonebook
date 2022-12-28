@@ -9,7 +9,7 @@ import TitleSlideTransition from "../../stylesTransition/TitleSlideTransition.mo
 import ContactSelector from "../redux/Selectors/ContactSelectors";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import ContactOperations from "../redux/ContactsOperations/ContactsOperation";
+import ContactOperations from "../redux/Operations/ContactsOperations";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 function Phonebook({ contacts, onRemovePersonData }) {
