@@ -23,7 +23,6 @@ class LoginForm extends Component {
     this.setState({ ...this.state });
   };
 
-  componentDidMount() {}
   render() {
     return (
       <Container>

@@ -5,19 +5,19 @@ import getStatusLogIn from "../redux/Selectors/ContactSelectors";
 import style from "./Navigation.module.css";
 const Navigation = () => (
   <div className={style.wrapper}>
-    <NavLink to="/" exact>
+    <NavLink to="/" exact className={style.link}>
       Главная
     </NavLink>
-    <br />
-    <NavLink to="/auth/signin" exact>
+
+    <NavLink to="/auth/signin" exact className={style.link}>
       Войти
     </NavLink>
-    <br />
-    <NavLink to="/auth/register" exact>
+
+    <NavLink to="/auth/register" exact className={style.link}>
       Регистрация
     </NavLink>
-    <br />
-    <NavLink to="/api/contacts" exact>
+
+    <NavLink to="/api/contacts" exact className={style.link}>
       Контакты
     </NavLink>
   </div>

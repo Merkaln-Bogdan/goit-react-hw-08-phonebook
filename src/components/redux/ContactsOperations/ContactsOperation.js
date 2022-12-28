@@ -1,7 +1,7 @@
 import TaskPhoneBook from "../TaskPhonebook";
 import Axios from "axios";
-// Axios.defaults.baseURL = "http://localhost:4040";
-Axios.defaults.baseURL = "https://phonebook-api-v1.onrender.com";
+Axios.defaults.baseURL = "http://localhost:4040";
+// Axios.defaults.baseURL = "https://phonebook-api-v1.onrender.com";
 
 const Token = (token) => {
   Axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -17,7 +17,6 @@ const registration = (user) => (dispatch) => {
       Token(response.data.token);
       dispatch(TaskPhoneBook.registersSuccess({ ...response.data }));
     })
-
     .catch((error) => dispatch(TaskPhoneBook.registersError(error.message)));
 };
 

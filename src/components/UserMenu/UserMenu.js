@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import ContactsOperation from "../redux/ContactsOperations/ContactsOperation";
 import ContactSelectors from "../redux/Selectors/ContactSelectors";
-import defaultAvatar from "../../assets/png-avatar.png";
+
+import defaultAvatar from "../../assets/pngavatar.png";
 
 import logOutButton from "../../assets/logout.png";
+
 import style from "./UserMenu.module.css";
 
 class UserMenu extends Component {
@@ -29,16 +31,13 @@ class UserMenu extends Component {
     return (
       <div className={style.WrapperUserMenu}>
         <div className={style.WrapperAvatar}>
-          {previewImage ||
-            (avatar && (
-              <img
-                className={style.Avatar}
-                src={previewImage || avatar || defaultAvatar}
-                alt="avatar"
-                width={100}
-                height={100}
-              />
-            ))}
+          <img
+            className={style.Avatar}
+            src={previewImage || avatar || defaultAvatar}
+            alt="avatar"
+            width={70}
+            height={70}
+          />
           <input
             type="file"
             name="avatar"
@@ -54,7 +53,7 @@ class UserMenu extends Component {
 
         <span className={style.BlockName}>Добро пожаловать, {name}</span>
         <button className={style.ButtonLogOut} type="button" onClick={logOut}>
-          <img src={logOutButton} alt="logout button " width="20" />
+          <img src={logOutButton} alt="logout button" width="20" />
         </button>
       </div>
     );
