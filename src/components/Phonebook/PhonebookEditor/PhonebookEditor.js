@@ -9,7 +9,19 @@ import { CSSTransition } from "react-transition-group";
 import UserOperation from "../../redux/Operations/UserOperation";
 
 class PhonebookEditor extends Component {
-  state = { firstName: "", lastName: "", number: "", city: "", profession: "", image: null, email: ""  };
+  state = { 
+      contact: {
+        firstName: "", 
+        lastName: "",
+        number: "", 
+        city: "",
+        profession: "", 
+        image: null, 
+        email: ""
+      },
+
+      alertName: false
+  };
 
   componentDidMount() {
     if (this.props.isAuthenticated) {
@@ -20,7 +32,7 @@ class PhonebookEditor extends Component {
 
   handleChange = (e) => {
     const { name, value } = e.target;
-    this.setState({ [name]: value });
+    this.setState((prevState) => ({ contact: {...prevState.contact, [name]: value}}));
   };
   handleSubmit = (e) => {
     const { addContacts, contacts } = this.props;
@@ -29,7 +41,7 @@ class PhonebookEditor extends Component {
     if (
       contacts.find(
         (element) =>
-          element.firstName.toLowerCase() === this.state.firstName.toLowerCase()
+          element.firstName.toLowerCase() === this.state.contact.firstName.toLowerCase()
       )
     ) {
       this.setState({
@@ -42,12 +54,13 @@ class PhonebookEditor extends Component {
     if (this.state.firstName === "" || this.state.number === "" || this.state.lastName === "") {
       alert("Введіть дані! (Please enter data!)");
     } else {
-      addContacts(this.state);
-      this.setState({ firstName: "", lastName: "",  number: "", city: "", profession: "", email: "" });
+      addContacts(this.state.contact);
+      this.setState({ contacts: {firstName: "", lastName: "",  number: "", city: "", profession: "", email: "" }});
     }
   };
   render() {
-    const { firstName, lastName, number, city, profession, email } = this.state;
+    console.log(this.state);
+    const { firstName, lastName, number, city, profession, email } = this.state.contact;
     return (
       <>
         <div>
