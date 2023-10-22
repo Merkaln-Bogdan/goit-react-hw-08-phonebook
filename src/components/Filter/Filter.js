@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 const Filter = ({ value, onChangeFilter }) => (
   <div className={style.wrapperFilter}>
     <label className={style.labelMarkup}>
-      Найти номер
+      Знайти номер
       <input
         className={style.inputField}
         type="text"

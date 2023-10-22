@@ -52,7 +52,7 @@ class UserMenu extends Component {
           </button>
         )}
 
-        <span className={style.BlockName}>Добро пожаловать, {name}</span>
+        <span className={style.BlockName}>Ласкаво просимо, {name}</span>
         <button className={style.ButtonLogOut} type="button" onClick={logOut}>
           <img src={logOutButton} alt="logout button" width="20" />
         </button>

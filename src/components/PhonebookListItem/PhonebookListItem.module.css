@@ -4,17 +4,30 @@
   margin: 0;
   align-items: center;
   padding: 10px;
+  border-radius: 8px;
   margin-top: 25px;
   box-shadow: 5px 5px 5px 5px rgba(29, 29, 87, 0.2);
+  background-color: #49e6eb;
 }
+
+.itemLink {
+  display: flex;
+  text-decoration: none;
+  color: black;
+}
+
 .dataPerson {
-  display: grid;
-  min-width: 40%;
+  width: 350px;
 }
+
+.dataPersonNumber{
+  margin-left: 20px;
+}
+
 .buttonRemove {
   width: 50px;
   height: 50px;
-  border-radius: 3px;
+  border-radius: 8px;
   border: none;
   background-color: rgb(240, 50, 50);
   color: #fff;

@@ -9,8 +9,10 @@ import PrivateRoute from "./PrivateRoute";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
 import LoginForm from "./components/LoginForm/LoginForm";
 import { Home } from "./components/HomePage/Homepage";
+import Footer from "./components/Footer/Footer";
 import Navigation from "./components/Navigation/Navigation";
 import Phonebook from "./components/Phonebook/Phonebook";
+import Item from "./components/Item/Item"
 import UserMenu from "./components/UserMenu/UserMenu";
 import style from "./App.module.css";
 
@@ -22,7 +24,7 @@ class App extends Component {
   }
   render() {
     return (
-      <>
+      <div className={style.Layout}>
         <div className={style.navigation}>
           <Navigation />
           {this.props.isAuthenticated && <UserMenu />}
@@ -53,9 +55,16 @@ class App extends Component {
               redirectTo={routes.login}
               component={Phonebook}
             />
+            <PrivateRoute
+              path={routes.contact}
+              restricted={true}
+              redirectTo={routes.login}
+              component={Item}
+            />
           </Switch>
         </Suspense>
-      </>
+        {this.props.isAuthenticated && <Footer/>}
+      </div>
     );
   }
 }

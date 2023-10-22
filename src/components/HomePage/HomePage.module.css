@@ -1,13 +1,15 @@
+.Home {
+  height: 100%;
+}
+
 .TitleHello {
   text-align: center;
   margin: 30px;
-  color: rgb(2, 11, 63);
 }
 
 .Description {
   font-size: 30px;
   text-align: center;
   width: 80%;
-  margin: 0 auto;
-  color: rgb(0, 0, 36);
+  margin: 0 auto 20px;
 }

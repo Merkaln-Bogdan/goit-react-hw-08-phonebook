@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import UserOperation from "../redux/Operations/UserOperation";
+import style from "./LoginForm.module.css"
 
 class LoginForm extends Component {
   state = {
@@ -26,11 +27,11 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <Container>
+      <Container className={style.Container} class="container-fluid d-flex flex-column">
         <br />
         <Row className="justify-content-md-center">
           <Col xs lg="5">
-            <h2>Ввойдите в ваш акаунт</h2>
+            <h2>Увійдіть в ваш акаунт</h2>
             <Form>
               <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email</Form.Label>

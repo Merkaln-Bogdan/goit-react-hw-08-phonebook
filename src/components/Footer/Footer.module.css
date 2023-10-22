@@ -1,0 +1,11 @@
+.Footer {
+    /* position: absolute; */
+    width: 100%;
+    bottom: 0;
+    margin-top: 10px;
+    padding: 20px;
+}
+
+.Copyright {
+   text-align: center;
+}

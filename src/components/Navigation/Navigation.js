@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import getStatusLogIn from "../redux/Selectors/ContactSelectors";
+import ContactSelector from "../redux/Selectors/ContactSelectors";
 import style from "./Navigation.module.css";
 const Navigation = () => (
   <div className={style.wrapper}>
@@ -24,7 +24,7 @@ const Navigation = () => (
 );
 const mapStateToProps = (state) => {
   return {
-    logIn: getStatusLogIn.getStatusLogIn(state),
+    logIn: ContactSelector.getStatusLogIn(state),
   };
 };
 

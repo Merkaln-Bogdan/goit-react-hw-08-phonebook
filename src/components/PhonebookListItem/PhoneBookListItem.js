@@ -1,17 +1,23 @@
 import React from "react";
-
+import { NavLink } from "react-router-dom";
 import style from "./PhonebookListItem.module.css";
 import PropTypes from "prop-types";
 
-const PhonebookListItem = ({ _id, name, number, onRemovePersonData }) => (
-  <li key={_id} className={style.listItem}>
-    <span className={style.dataPerson}>{name}:</span>
-    <span className={style.dataPerson}>{number}</span>
+const PhonebookListItem = ({ contact, onRemovePersonData }) => {
+  const {_id, firstName, lastName, number} = contact
+  return(
+    <li key={_id} className={style.listItem}>
+    <NavLink to={`/api/contact/${_id}`} className={style.itemLink}>
+      <span className={style.dataPerson}>{firstName} {lastName}:</span>
+      <span className={style.dataPersonNumber}>{number}</span>
+    </NavLink>
+   
     <button className={style.buttonRemove} onClick={onRemovePersonData}>
       ✕
     </button>
   </li>
-);
+  )
+}
 
 export default PhonebookListItem;
 

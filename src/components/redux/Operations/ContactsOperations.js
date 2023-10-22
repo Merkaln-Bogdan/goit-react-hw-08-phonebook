@@ -1,12 +1,9 @@
 import TaskPhoneBook from "../TaskPhonebook";
 import Axios from "axios";
 
-const addContacts = (name, number) => (dispatch) => {
+const addContacts = (obj) => (dispatch) => {
   dispatch(TaskPhoneBook.addContactsRequest());
-  Axios.post("/api/contacts", {
-    name,
-    number,
-  })
+  Axios.post("/api/contacts", obj)
     .then((response) =>
       dispatch(TaskPhoneBook.addContactsSuccess(response.data))
     )
@@ -20,6 +17,15 @@ const fetchContacts = () => (dispatch) => {
     )
     .catch((error) => dispatch(TaskPhoneBook.fetchContactsError()));
 };
+
+const getContact = (id) => (dispatch) => {
+  console.log(id);
+  dispatch(TaskPhoneBook.getContactRequest());
+  Axios.get(`/api/contacts/${id}`)
+    .then((response) => dispatch(TaskPhoneBook.getContactSuccess(response.data)))
+    .catch((error) => dispatch(TaskPhoneBook.getContactError()));
+};
+
 const removeContact = (id) => (dispatch) => {
   dispatch(TaskPhoneBook.removeContactsRequest());
   Axios.delete(`/api/contacts/${id}`)
@@ -32,4 +38,5 @@ export default {
   addContacts,
   fetchContacts,
   removeContact,
+  getContact
 };
