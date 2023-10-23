@@ -3,16 +3,21 @@ import { connect } from "react-redux";
 
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import UserOperation from "../redux/Operations/UserOperation";
+
+import UserOperation from "../../redux/Operations/UserOperation";
+import Wrapper from "../Wrapper";
 
 class LoginForm extends Component {
+
   state = {
     email: "",
     password: "",
   };
+
   handleChange = ({ target: { name, value } }) => {
     this.setState({ [name]: value });
   };
+
   handleSubmit = (e) => {
     e.preventDefault();
     const { email, password } = this.state;
@@ -26,8 +31,8 @@ class LoginForm extends Component {
 
   render() {
     return (
+    <Wrapper>
       <Container className="container-fluid d-flex flex-column">
-        <br />
         <Row className="justify-content-md-center">
           <Col xs lg="5">
             <h2>Увійдіть в ваш акаунт</h2>
@@ -36,7 +41,7 @@ class LoginForm extends Component {
                 <Form.Label>Email</Form.Label>
                 <Form.Control
                   type="email"
-                  placeholder="введите email"
+                  placeholder="enter email"
                   suggested="email"
                   name="email"
                   value={this.state.email}
@@ -45,10 +50,10 @@ class LoginForm extends Component {
                 />
               </Form.Group>
               <Form.Group controlId="formBasicPassword">
-                <Form.Label>пароль</Form.Label>
+                <Form.Label>пароль (password)</Form.Label>
                 <Form.Control
                   type="password"
-                  placeholder="пароль"
+                  placeholder="enter password"
                   suggested="password"
                   name="password"
                   value={this.state.password}
@@ -62,12 +67,13 @@ class LoginForm extends Component {
                 type="button"
                 onClick={this.handleSubmit}
               >
-                Ввойти в акаунт
+                Ввійти в акаунт (Sign in)
               </Button>
             </Form>
           </Col>
         </Row>
       </Container>
+    </Wrapper>
     );
   }
 }

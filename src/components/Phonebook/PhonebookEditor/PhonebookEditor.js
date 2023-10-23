@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import style from "../PhoneBook.module.css";
 import alertSlideTransition from "../../../stylesTransition/AlertTransition.module.css";
 import { connect } from "react-redux";
-import ContactsOperations from "../../redux/Operations/ContactsOperations";
-import ContactSelector from "../../redux/Selectors/ContactSelectors";
+import ContactsOperations from "../../../redux/Operations/ContactsOperations";
+import ContactSelector from "../../../redux/Selectors/ContactSelectors";
 import AlertWindow from "../../AlertWindow/AlertWindow";
 import { CSSTransition } from "react-transition-group";
-import UserOperation from "../../redux/Operations/UserOperation";
+import UserOperation from "../../../redux/Operations/UserOperation";
 
 class PhonebookEditor extends Component {
   state = { 
@@ -17,7 +17,8 @@ class PhonebookEditor extends Component {
         city: "",
         profession: "", 
         image: null, 
-        email: ""
+        email: "",
+        gender: ""
       },
 
       alertName: false
@@ -55,12 +56,21 @@ class PhonebookEditor extends Component {
       alert("Введіть дані! (Please enter data!)");
     } else {
       addContacts(this.state.contact);
-      this.setState({ contacts: {firstName: "", lastName: "",  number: "", city: "", profession: "", email: "" }});
+      this.setState({ 
+        contact: {
+          firstName: "", 
+          lastName: "",  
+          number: "", 
+          city: "", 
+          profession: "", 
+          email: "",
+          gender: ""
+        }});
     }
   };
   render() {
-    console.log(this.state);
-    const { firstName, lastName, number, city, profession, email } = this.state.contact;
+  
+    const { firstName, lastName, number, city, profession, email, gender } = this.state.contact;
     return (
       <>
         <div>
@@ -118,6 +128,16 @@ class PhonebookEditor extends Component {
                 value={profession}
                 onChange={this.handleChange}
                 name="profession"
+              />
+            </label>
+            <label className={style.inputField}>
+              Стать (Gender)
+              <input
+            
+                type="text"
+                value={gender}
+                onChange={this.handleChange}
+                name="gender"
               />
             </label>
 

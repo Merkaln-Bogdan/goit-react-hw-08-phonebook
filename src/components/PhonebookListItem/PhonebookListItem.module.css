@@ -34,13 +34,15 @@
   cursor: pointer;
   font-size: 30px;
 }
+
 button:hover {
   background-color: rgb(216, 150, 7);
 }
+
 @media (min-width: 767px) {
   .listItem {
     letter-spacing: 2px;
-    width: 70%;
+    width: 55%;
   }
   .dataPerson {
     font-size: 30px;

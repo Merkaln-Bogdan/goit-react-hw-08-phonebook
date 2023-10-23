@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./HomePage.module.css";
+
 export const Home = () => (
   <div className={style.Home}>
     <h2 className={style.TitleHello}>Вітаю!</h2>

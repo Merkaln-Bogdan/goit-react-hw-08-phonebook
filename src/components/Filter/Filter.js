@@ -1,7 +1,7 @@
 import React from "react";
 import style from "../Phonebook/PhoneBook.module.css";
 import { connect } from "react-redux";
-import taskPhonebook from "../redux/TaskPhonebook";
+import taskPhonebook from "../../redux/TaskPhonebook";
 import PropTypes from "prop-types";
 
 const Filter = ({ value, onChangeFilter }) => (

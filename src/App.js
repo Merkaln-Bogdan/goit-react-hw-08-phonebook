@@ -1,20 +1,22 @@
 import React, { Component, Suspense } from "react";
 import { Switch } from "react-router-dom";
 import routes from "./routes";
-import UserOperations from "./components/redux/Operations/UserOperation";
-import ContactSelector from "./components/redux/Selectors/ContactSelectors";
+import UserOperations from "./redux/Operations/UserOperation";
+import ContactSelector from "./redux/Selectors/ContactSelectors";
 import { connect } from "react-redux";
 import PublicRoute from "./PublicRoute";
 import PrivateRoute from "./PrivateRoute";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
 import LoginForm from "./components/LoginForm/LoginForm";
 import { Home } from "./components/HomePage/Homepage";
-import Footer from "./components/Footer/Footer";
-import Navigation from "./components/Navigation/Navigation";
+import Footer from "./components/Footer";
+
 import Phonebook from "./components/Phonebook/Phonebook";
 import Item from "./components/Item/Item"
-import UserMenu from "./components/UserMenu/UserMenu";
-import style from "./App.module.css";
+
+import { Layout } from "./components/Layout/Layout";
+import Header from "./components/Header";
+import Wrapper from "./components/Wrapper";
 
 // The app will be update and rewritten a little bit later with hooks and new features of React
 
@@ -22,14 +24,14 @@ class App extends Component {
   componentDidMount() {
     this.props.onGetUser();
   }
+  
   render() {
     return (
-      <div className={style.Layout}>
-        <div className={style.navigation}>
-          <Navigation />
-          {this.props.isAuthenticated && <UserMenu />}
-        </div>
-        <Suspense fallback={<div>...Loading</div>}>
+      <Layout>
+        <Header isAuthenticated={this.props.isAuthenticated} />
+
+        <Wrapper>
+          <Suspense fallback={<div>...Loading</div>}>
           <Switch>
             <PublicRoute
               path={routes.home}
@@ -63,8 +65,10 @@ class App extends Component {
             />
           </Switch>
         </Suspense>
-        {this.props.isAuthenticated && <Footer/>}
-      </div>
+        </Wrapper>
+  
+        <Footer/>
+      </Layout>
     );
   }
 }

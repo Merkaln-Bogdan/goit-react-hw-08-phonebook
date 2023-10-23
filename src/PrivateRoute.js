@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import getstatus from "./components/redux/Selectors/ContactSelectors";
+import getstatus from "./redux/Selectors/ContactSelectors";
 
 const PrivateRoute = ({
   component: Component,

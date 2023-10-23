@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Registerform.css";
-import TaskPhonebook from "../redux/TaskPhonebook";
-import UserOperation from "../redux/Operations/UserOperation";
+import TaskPhonebook from "../../redux/TaskPhonebook";
+import UserOperation from "../../redux/Operations/UserOperation";
 
 class RegisterForm extends Component {
   state = {
@@ -39,10 +39,10 @@ class RegisterForm extends Component {
         <br />
         <Row className="justify-content-md-center">
           <Col xs lg="5">
-            <h2>Регистрация</h2>
+            <h2>Регістрація (Sign up)</h2>
             <Form type="form">
               <Form.Group controlId="firstName">
-                <Form.Label>имя</Form.Label>
+                <Form.Label>ім'я</Form.Label>
                 <Form.Control
                   type="name"
                   name="name"
@@ -81,7 +81,8 @@ class RegisterForm extends Component {
                 type="button"
                 onClick={this.handleSubmit}
               >
-                РЕГИСТРАЦИЯ
+                РЕГІСТРАЦІЯ
+                (Sign up)
               </Button>
             </Form>
           </Col>

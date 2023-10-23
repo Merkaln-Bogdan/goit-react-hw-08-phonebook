@@ -6,10 +6,10 @@ import PhonebookListItem from "../PhonebookListItem/PhoneBookListItem";
 import slideTransition from "../../stylesTransition/PhonebookListSlide.module.css";
 import PhoneFilter from "../../stylesTransition/PhoneFilter.module.css";
 import TitleSlideTransition from "../../stylesTransition/TitleSlideTransition.module.css";
-import ContactSelector from "../redux/Selectors/ContactSelectors";
+import ContactSelector from "../../redux/Selectors/ContactSelectors";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import ContactOperations from "../redux/Operations/ContactsOperations";
+import ContactOperations from "../../redux/Operations/ContactsOperations";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 function Phonebook({ contacts, value, onRemovePersonData }) {
