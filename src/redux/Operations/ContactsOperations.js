@@ -33,9 +33,30 @@ const removeContact = (id) => (dispatch) => {
     .catch((error) => dispatch(TaskPhoneBook.removeContactsError()));
 };
 
+const changePhotoContact = (file, id) => (dispatch) => {
+  const formData = new FormData();
+
+  formData.append("profile", file);
+
+  dispatch(TaskPhoneBook.changePhotoContactRequest());
+  Axios.post(`/api/contacts/${id}/upload-photo`, formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    }
+  })
+    .then((response) => {
+      dispatch(TaskPhoneBook.getContactSuccess(response.data));
+    })
+    .catch((error) =>
+      dispatch(TaskPhoneBook.changePhotoContactError(error.message))
+    );
+};
+
+
 export default {
   addContacts,
   fetchContacts,
   removeContact,
-  getContact
+  getContact,
+  changePhotoContact
 };

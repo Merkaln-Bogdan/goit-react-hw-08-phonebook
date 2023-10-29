@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import ContactsOperation from "../../redux/Operations/ContactsOperations";
 import ContactSelectors from "../../redux/Selectors/ContactSelectors";
 
 import defaultAvatar from "../../assets/pngavatar.png";
@@ -66,6 +65,6 @@ const mapStateToProps = (state) => ({
 });
 const MapDispatchToProps = {
   logOut: UserOperation.logOutUser,
-  changeAvatar: ContactsOperation.createUserAvatar,
+  changeAvatar: UserOperation.createUserAvatar,
 };
 export default connect(mapStateToProps, MapDispatchToProps)(UserMenu);

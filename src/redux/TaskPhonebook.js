@@ -31,13 +31,13 @@ const getContactRequest = createAction("contacts/geContactRequest");
 const getContactSuccess = createAction("contacts/geContactSuccess");
 const getContactError = createAction("contacts/geContactError");
 
-const changeUserAvatarRequest = createAction(
-  "contacts/changeUserAvatarRequest"
-);
-const changeUserAvatarSuccess = createAction(
-  "contacts/changeUserAvatarSuccess"
-);
+const changeUserAvatarRequest = createAction("contacts/changeUserAvatarRequest");
+const changeUserAvatarSuccess = createAction("contacts/changeUserAvatarSuccess");
 const changeUserAvatarError = createAction("contacts/changeUserAvatarError");
+
+const changePhotoContactRequest = createAction("contacts/changePhotoContactRequest");
+const changePhotoContactSuccess = createAction("contacts/changePhotoContactSuccess");
+const changePhotoContactError = createAction("contacts/changePhotoContactError");
 
 const changeFilter = createAction("contacts/filter");
 
@@ -69,5 +69,8 @@ export default {
   changeFilter,
   getContactRequest,
   getContactSuccess,
-  getContactError
+  getContactError,
+  changePhotoContactRequest,
+  changePhotoContactSuccess,
+  changePhotoContactError
 };
