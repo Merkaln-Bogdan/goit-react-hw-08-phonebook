@@ -6,7 +6,7 @@ import defaultAvatar from "../../assets/pngavatar.png";
 
 import logOutButton from "../../assets/logout.png";
 
-import style from "./index.module.css";
+import style from "./UserMenu.module.css";
 import UserOperation from "../../redux/Operations/UserOperation";
 
 class UserMenu extends Component {
@@ -51,7 +51,7 @@ class UserMenu extends Component {
           </button>
         )}
 
-        <span className={style.BlockName}>Ласкаво просимо, {name}</span>
+        <span className={style.BlockName}>Wellcome, {name}</span>
         <button className={style.ButtonLogOut} type="button" onClick={logOut}>
           <img src={logOutButton} alt="logout button" width="20" />
         </button>

@@ -19,6 +19,7 @@ function Phonebook({ contacts, value, onRemovePersonData }) {
 
   return (
     <div className={style.wrapper}>
+      
         <CSSTransition
           in
           appear
@@ -69,10 +70,12 @@ function Phonebook({ contacts, value, onRemovePersonData }) {
     </div>
   );
 }
+
 const MapStateToProps = (state) => ({
   contacts: ContactSelector.visibleContacts(state),
   value: state.contacts.filter,
 });
+
 const MapDispatchToProps = {
   onRemovePersonData: ContactOperations.removeContact,
 };

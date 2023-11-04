@@ -7,17 +7,21 @@ import TaskPhonebook from "../../redux/TaskPhonebook";
 import UserOperation from "../../redux/Operations/UserOperation";
 
 class RegisterForm extends Component {
+
   state = {
     name: "",
     email: "",
     password: "",
   };
+
   handleChange = ({ target: { name, value } }) => {
     this.setState({ [name]: value });
   };
+
   handleSubmit = (e) => {
     e.preventDefault();
     const { name, email, password } = this.state;
+
     const user = {
       name: name,
       email: email,
@@ -28,12 +32,13 @@ class RegisterForm extends Component {
       this.props.onRegister(user);
       this.setState({ ...this.state });
     } else {
-      alert("пароль или email не действительны!");
+      alert("пароль або email невірний! (Not correct data!)");
     }
   };
 
   render() {
     const { name, email, password } = this.state;
+
     return (
       <Container className="container">
         <br />

@@ -24,4 +24,5 @@ const error = createReducer(null, {
   [TaskPhonebook.logoutError]: (_, { payload }) => payload,
   [TaskPhonebook.getCurrentUserError]: (_, { payload }) => payload,
 });
+
 export default combineReducers({ user, token, error });

@@ -10,8 +10,10 @@ a:hover{
 }
   
 input {
-    border-radius: 8px;
     height: 40px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 8px;
 }
 
 @media (max-width: 767px) {

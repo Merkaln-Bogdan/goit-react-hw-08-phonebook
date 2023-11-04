@@ -1,8 +1,7 @@
 import TaskPhoneBook from "../TaskPhonebook";
 import Axios from "axios";
 
-// Axios.defaults.baseURL = "https://phonebook-api-v1.onrender.com";
-Axios.defaults.baseURL = "http://127.0.0.1:4040";
+Axios.defaults.baseURL = "https://phonebook-api-v2.onrender.com";
 
 const Token = (token) => {
   Axios.defaults.headers.common.Authorization = `Bearer ${token}`;

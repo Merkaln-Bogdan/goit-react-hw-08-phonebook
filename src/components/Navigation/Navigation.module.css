@@ -13,6 +13,7 @@
 .link {
   padding: 0 5px;
   color: #ffffff;
+  margin: 0 10px;
 }
 
 @media (max-width: 767px) {
