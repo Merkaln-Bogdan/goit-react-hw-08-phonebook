@@ -1,9 +1,13 @@
 .wrapper {
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 60%;
+  justify-content: space-between;
+  width: 100%;
   margin-right: 30px;
+  width: 100%;
+  margin: 20px;
+  width: auto;
+  flex-direction: row;
+  
 }
 
 .link {
@@ -11,10 +15,15 @@
   color: #ffffff;
 }
 
-@media (min-width: 767px) {
+@media (max-width: 767px) {
   .wrapper {
-    margin: 20px;
-    flex-direction: row;
+    margin: 10px;
+    width: auto;
+    flex-direction: column;
     justify-content: space-between;
+  }
+
+  .link {
+    margin: 5px 0;
   }
 }

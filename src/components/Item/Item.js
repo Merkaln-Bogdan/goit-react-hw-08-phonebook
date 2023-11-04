@@ -1,37 +1,43 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import FadeLoader from "react-spinners/FadeLoader";
 import ContactsOperations from "../../redux/Operations/ContactsOperations";
 import ContactSelector from "../../redux/Selectors/ContactSelectors";
-import manPhoto  from "../../assets/work_man.jpg"
-import girlPhoto  from "../../assets/women_photo.jpg"
+import camera  from "../../assets/camera.png"
+
+const override = {
+  display: "block",
+  margin: "0 auto"
+};
 
 
 class item extends Component {
   state = { 
     contact: {
+      id: null,
       firstName: "", 
       lastName: "", 
       number: "", 
       city: "", 
       profession: "", 
-      image: "", 
+      image: '', 
       email: "" ,
       gender: ""
     },
     previewImage: null,
     fileImage: null,
-    id: null
+    loading: true
   }
   
   componentDidMount() {
     const {id} = this.props.match.params;
-    this.setState({id: id})
     this.props.getContact(id);
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.contact !== prevProps.contact) {
-      this.setState({contact: {...this.props.contact}})
+      console.log(this.props.contact, prevProps.contact);
+      this.setState({contact: {...this.props.contact}, loading: false})
     }
   }
 
@@ -43,41 +49,65 @@ class item extends Component {
     });
   };
 
+  handleChangePhotoContact = (id) => {
+    this.setState({loading: true})
+    this.props.changePhotoContact(this.state.fileImage, id)
+    this.props.getContact(id)
+  }
 
   render() {
-   const { firstName, lastName, number, city, profession, email, image, gender } = this.state.contact
-   const { previewImage, id, fileImage } = this.state
-    const {changePhotoContact} = this.props
+
+   const { firstName, lastName, number, city, profession, email, image, gender, id } = this.state.contact;
+   const { previewImage, loading } = this.state;
 
     return (
-      firstName ?
-      <div className={"card"} style={{width: "40rem", margin: "0 auto"}}>
-        <label>
-              Фото (Photo)
-              <input
-                type="file"
-                name="avatar"
-                onChange={this.selectFile}
+      <>
+        {loading ? 
+          <FadeLoader
+            color={"#36d7b7"}
+            loading={loading}
+            cssOverride={override}
+            size={300}
+            height={20}
+            aria-label="Loading Spinner"
+            data-testid="loader"    
+          />
+         :
+            <div className={"card p-2"} style={{maxWidth: "30rem", borderRadius: "10px", margin: "0 auto"}}>
             
-              />
-              {previewImage && (
-            <button type="button" onClick={() => changePhotoContact(fileImage, id)}>
-              Upload
-            </button>
-        )}
+            <img className={"card-img-top"} src={image || previewImage || camera} alt="Card_cap"/>
+          
+            {!image && 
+              <div>
+                <label className={"m-2"}>
+                    Фото (Photo)
+                    <input
+                      type="file"
+                      name="avatar"
+                      onChange={this.selectFile}
+                      title="Photo"
+                      className={"mx-1"}
+                    />
 
-          </label>
-        <img className={"card-img-top"} src={image || (gender === "male" ? manPhoto : girlPhoto)} alt="Card_cap"/>
-        <div className={"card-body"}>
-          <h5 className={"card-title"}>{firstName} {lastName}</h5>
-          <p className={"card-text"}>Phone number: {number}</p>
-          <p className={"card-text"}>Email: {email}</p>
-          <p className={"card-text"}>City: {city}</p>
-          <p className={"card-text"}>Profession: {profession}</p>
-          {/* <a href="#" className="btn btn-primary"></a> */}
-        </div>
-      </div>
-      : <div style={{margin: "0 auto"}}>Loading...</div>
+                </label>
+              </div>
+              }
+              {previewImage && 
+                <button type="button" onClick={() => this.handleChangePhotoContact(id)}>
+                  Upload
+                </button>
+              }
+            <div className={"card-body"}>
+              <h5 className={"card-title font-weight-bold"}>{firstName} {lastName}</h5>
+              <span className={"d-flex justify-content-between"}>Phone number: <p className={"ml-2 font-weight-bold"}>{number}</p></span>
+              <span className={"d-flex justify-content-between"}>Email: <p className={"ml-2 font-weight-bold"}>{email}</p></span>
+              <span className={"d-flex justify-content-between"}>City: <p className={"ml-2 font-weight-bold"}>{city}</p></span>
+              <span className={"d-flex justify-content-between"}>Profession: <p className={"ml-2 font-weight-bold"}>{profession}</p></span>
+              <span className={"d-flex justify-content-between"}>Gender: <p className={"ml-2 font-weight-bold"}>{gender}</p></span>
+            </div>
+          </div>
+         }
+      </>
     );
   }
 }

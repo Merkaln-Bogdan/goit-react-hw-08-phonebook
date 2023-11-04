@@ -12,12 +12,15 @@
 
 .itemLink {
   display: flex;
+  justify-content: space-between;
   text-decoration: none;
   color: black;
 }
 
 .dataPerson {
-  width: 350px;
+  width: 220px;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .dataPersonNumber{
@@ -39,12 +42,21 @@ button:hover {
   background-color: rgb(216, 150, 7);
 }
 
-@media (min-width: 767px) {
+@media (max-width: 767px) {
   .listItem {
     letter-spacing: 2px;
-    width: 55%;
   }
+
+  .itemLink {
+    flex-direction: column;
+  }
+
   .dataPerson {
-    font-size: 30px;
+    font-size: 20px;
+    width: auto;
+  }
+
+  .dataPersonNumber{
+    margin-left: 0;
   }
 }

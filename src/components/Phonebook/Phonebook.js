@@ -1,47 +1,50 @@
 import React from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+
 import style from "./PhoneBook.module.css";
 import PhonebookEditor from "./PhonebookEditor/PhonebookEditor";
 import Filter from "../Filter/Filter";
 import PhonebookListItem from "../PhonebookListItem/PhoneBookListItem";
 import slideTransition from "../../stylesTransition/PhonebookListSlide.module.css";
 import PhoneFilter from "../../stylesTransition/PhoneFilter.module.css";
-import TitleSlideTransition from "../../stylesTransition/TitleSlideTransition.module.css";
+import titleSlideTransition from "../../stylesTransition/TitleSlideTransition.module.css";
 import ContactSelector from "../../redux/Selectors/ContactSelectors";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
+
 import ContactOperations from "../../redux/Operations/ContactsOperations";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 function Phonebook({ contacts, value, onRemovePersonData }) {
+
+
   return (
-    <>
-      <div className={style.Wrapper}>
+    <div className={style.wrapper}>
         <CSSTransition
           in
           appear
           timeout={1000}
-          classNames={TitleSlideTransition}
+          classNames={titleSlideTransition}
           unmountOnExit
         >
           <h1 className={style.title}>Phonebook</h1>
         </CSSTransition>
-      </div>
+
       <div className={style.phoneList}>
-        <h2 className={style.TitleContacts}>Контакти (Contacts)</h2>
+        <h2 className={style.titleContacts}>Контакти (Contacts)</h2>
 
         <PhonebookEditor />
-        {/* {contacts.length > 0 ? ( */}
+        {contacts.length > 0 ? (
           <CSSTransition
-            in={contacts.length > 0}
+            in={value.length > 1 || contacts.length > 1}
             timeout={250}
             classNames={PhoneFilter}
             unmountOnExit
           >
             <Filter />
           </CSSTransition>
-        {/* ) : (
+        ) : (
           <h2 className={style.TitleContacts}>Немає контактів (No contacts)</h2>
-        )} */}
+        )} 
         <div className={style.ContactListWrapper}>
           <TransitionGroup component="ul" className={style.contactList}>
             {contacts.map((contact) => (
@@ -63,7 +66,7 @@ function Phonebook({ contacts, value, onRemovePersonData }) {
           </TransitionGroup>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 const MapStateToProps = (state) => ({

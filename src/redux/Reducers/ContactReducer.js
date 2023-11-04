@@ -3,13 +3,16 @@ import TaskPhonebook from "../TaskPhonebook";
 import { createReducer } from "@reduxjs/toolkit";
 
 const initialUserState = {
+  id: null,
   firstName: "",
   lastName: "",
+  number: "",
   profession: "",
   image: "",
   city: "",
   email: "",
-  gender: ""
+  gender: "",
+  male: null
 };
 
 const contact = createReducer(initialUserState, {

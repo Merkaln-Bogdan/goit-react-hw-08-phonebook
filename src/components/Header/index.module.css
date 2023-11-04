@@ -1,17 +1,18 @@
 .Navigation {
     display: flex;
     justify-content: space-around;
-    font-size: 16px;
+    width: 50%;
     margin: 0 auto;
-    margin: 20px;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    font-size: 16px;
   }
   
-  @media (min-width: 767px) {
+  @media (max-width: 767px) {
     .Navigation {
+      width: 100%;
       display: flex;
-      width: 85%;
-      margin: 0 auto;
-      font-size: 25px;
+      font-size: 18px;
     }
   }
   

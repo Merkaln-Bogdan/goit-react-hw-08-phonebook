@@ -73,7 +73,7 @@ class PhonebookEditor extends Component {
     const { firstName, lastName, number, city, profession, email, gender } = this.state.contact;
     return (
       <>
-        <div>
+        <div className={style.wrapperForm}>
           <form className={style.form} onSubmit={this.handleSubmit}>
             <label className={style.inputField}>
               Ім'я (First name)
@@ -82,6 +82,7 @@ class PhonebookEditor extends Component {
                 value={firstName}
                 onChange={this.handleChange}
                 name="firstName"
+                required
               />
             </label>
             <label  className={style.inputField}>
@@ -91,6 +92,7 @@ class PhonebookEditor extends Component {
                 value={lastName}
                 onChange={this.handleChange}
                 name="lastName"
+                required
               />
             </label>
             <label   className={style.inputField}>
@@ -100,6 +102,7 @@ class PhonebookEditor extends Component {
                 value={number}
                 onChange={this.handleChange}
                 name="number"
+                required
               />
             </label>
             <label className={style.inputField}>
@@ -109,6 +112,7 @@ class PhonebookEditor extends Component {
                 value={email}
                 onChange={this.handleChange}
                 name="email"
+                required
               />
             </label>
             <label  className={style.inputField}>
@@ -133,11 +137,11 @@ class PhonebookEditor extends Component {
             <label className={style.inputField}>
               Стать (Gender)
               <input
-            
                 type="text"
                 value={gender}
                 onChange={this.handleChange}
                 name="gender"
+                required
               />
             </label>
             {/* <label className={style.inputField}>
