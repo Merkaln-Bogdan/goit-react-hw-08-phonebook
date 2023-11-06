@@ -144,15 +144,6 @@ class PhonebookEditor extends Component {
                 required
               />
             </label>
-            {/* <label className={style.inputField}>
-              Фото (Photo)
-              <input
-                type="file"
-                name="avatar"
-                onChange={this.selectFile}
-                className={style.InputAvatar}
-              />
-            </label> */}
             <button className={style.buttonAdd} type="submit">
               Додати контакт (Add)
             </button>
