@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import FadeLoader from "react-spinners/FadeLoader";
 import ContactsOperations from "../../redux/Operations/ContactsOperations";
-import ContactSelector from "../../redux/Selectors/ContactSelectors";
+import ContactSelector from "../../redux/Selectors/Selectors";
 import camera  from "../../assets/camera.png"
 
 const override = {
@@ -36,7 +36,6 @@ class item extends Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.contact !== prevProps.contact) {
-      console.log(this.props.contact, prevProps.contact);
       this.setState({contact: {...this.props.contact}, loading: false})
     }
   }

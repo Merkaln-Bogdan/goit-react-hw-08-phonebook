@@ -3,7 +3,7 @@ import style from "../PhoneBook.module.css";
 import alertSlideTransition from "../../../stylesTransition/AlertTransition.module.css";
 import { connect } from "react-redux";
 import ContactsOperations from "../../../redux/Operations/ContactsOperations";
-import ContactSelector from "../../../redux/Selectors/ContactSelectors";
+import ContactSelector from "../../../redux/Selectors/Selectors";
 import AlertWindow from "../../AlertWindow/AlertWindow";
 import { CSSTransition } from "react-transition-group";
 import UserOperation from "../../../redux/Operations/UserOperation";

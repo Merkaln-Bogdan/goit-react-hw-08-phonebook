@@ -10,7 +10,7 @@ import PhonebookListItem from "../PhonebookListItem/PhoneBookListItem";
 import slideTransition from "../../stylesTransition/PhonebookListSlide.module.css";
 import PhoneFilter from "../../stylesTransition/PhoneFilter.module.css";
 import titleSlideTransition from "../../stylesTransition/TitleSlideTransition.module.css";
-import ContactSelector from "../../redux/Selectors/ContactSelectors";
+import ContactSelector from "../../redux/Selectors/Selectors";
 
 import ContactOperations from "../../redux/Operations/ContactsOperations";
 

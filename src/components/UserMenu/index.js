@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import ContactSelectors from "../../redux/Selectors/ContactSelectors";
+import ContactSelectors from "../../redux/Selectors/Selectors";
 
 import defaultAvatar from "../../assets/pngavatar.png";
 

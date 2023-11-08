@@ -13,7 +13,7 @@ const tokenUnset = () => {
 
 const registration = (user) => (dispatch) => {
   dispatch(TaskPhoneBook.registersRequest());
-  Axios.post("/auth/register", user)
+    Axios.post("/auth/register", user)
     .then((response) => {
       Token(response.data.token);
       dispatch(TaskPhoneBook.registersSuccess({ ...response.data }));
@@ -24,11 +24,11 @@ const registration = (user) => (dispatch) => {
 const loginUser = (user) => (dispatch) => {
   dispatch(TaskPhoneBook.loginRequest());
   Axios.post("/auth/signin", user)
-    .then((response) => {
-      Token(response.data.token);
-      dispatch(TaskPhoneBook.loginSuccess({ ...response.data }));
-    })
-    .catch((error) => dispatch(TaskPhoneBook.loginError(error.message)));
+      .then((response) => {
+        Token(response.data.token);
+        dispatch(TaskPhoneBook.loginSuccess({ ...response.data }));
+      })
+      .catch((error) => dispatch(TaskPhoneBook.loginError(error.message)));  
 };
 
 const getUser = () => (dispatch, getState) => {

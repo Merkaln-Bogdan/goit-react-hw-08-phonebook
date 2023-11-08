@@ -1,12 +1,16 @@
 import { combineReducers } from "redux";
 import TaskPhonebook from "../TaskPhonebook";
 import { createReducer } from "@reduxjs/toolkit";
+
 const initialUserState = {
   name: null,
   email: null,
   subscription: null,
-  avatarURL: null,
+  avatarURL: null,   
 };
+
+const loading = false;
+
 const user = createReducer(initialUserState, {
   [TaskPhonebook.registersSuccess]: (_, { payload }) => payload.user,
   [TaskPhonebook.loginSuccess]: (_, { payload }) => payload.user,
@@ -19,10 +23,18 @@ const token = createReducer(null, {
   [TaskPhonebook.logoutSuccess]: () => null,
 });
 const error = createReducer(null, {
-  [TaskPhonebook.registerError]: (_, { payload }) => payload,
+  [TaskPhonebook.registersError]: (_, { payload }) => payload,
   [TaskPhonebook.loginError]: (_, { payload }) => payload,
   [TaskPhonebook.logoutError]: (_, { payload }) => payload,
   [TaskPhonebook.getCurrentUserError]: (_, { payload }) => payload,
 });
 
-export default combineReducers({ user, token, error });
+const loader = createReducer(loading, {
+  [TaskPhonebook.registersRequest]: () => true,
+  [TaskPhonebook.loginRequest]: () => true,
+  [TaskPhonebook.getCurrentUserSuccess]: () => false,
+  [TaskPhonebook.getCurrentUserError]: () => false,
+  [TaskPhonebook.registersError]: () => false,
+});
+
+export default combineReducers({ user, token, error, loader });

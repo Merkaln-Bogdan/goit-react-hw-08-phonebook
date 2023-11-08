@@ -6,6 +6,9 @@ const getCurrentContact = (state) => state.contact.contact;
 const getStatusLogIn = (state) => state.auth.loginUser;
 const getAvatar = (state) => state.auth.user.avatarURL;
 const getFilter = (state) => state.contacts.filter;
+const getLoader = (state) => state.auth.loader;
+const getError = (state) => state.auth.error;
+
 const visibleContacts = createSelector(
   [getContacts, getFilter],
   (actions, filter) => {
@@ -24,4 +27,6 @@ export default {
   getFilter,
   getStatusLogIn,
   visibleContacts,
+  getLoader,
+  getError
 };

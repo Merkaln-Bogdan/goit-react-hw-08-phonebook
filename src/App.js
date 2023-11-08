@@ -2,7 +2,7 @@ import React, { Component, Suspense } from "react";
 import { Switch } from "react-router-dom";
 import routes from "./routes";
 import UserOperations from "./redux/Operations/UserOperation";
-import ContactSelector from "./redux/Selectors/ContactSelectors";
+import Selector from "./redux/Selectors/Selectors";
 import { connect } from "react-redux";
 import PublicRoute from "./PublicRoute";
 import PrivateRoute from "./PrivateRoute";
@@ -21,6 +21,7 @@ import Wrapper from "./components/Wrapper";
 // The app will be update and rewritten a little bit later with hooks and new features of React
 
 class App extends Component {
+
   componentDidMount() {
     this.props.onGetUser();
   }
@@ -29,7 +30,6 @@ class App extends Component {
     return (
       <Layout>
         <Header isAuthenticated={this.props.isAuthenticated} />
-
         <Wrapper>
           <Suspense fallback={<div>...Loading</div>}>
           <Switch>
@@ -73,9 +73,10 @@ class App extends Component {
   }
 }
 const MapStateToProps = (state) => ({
-  contacts: ContactSelector.visibleContacts(state),
-  isAuthenticated: ContactSelector.isAuthenticated(state),
+  contacts: Selector.visibleContacts(state),
+  isAuthenticated: Selector.isAuthenticated(state)
 });
+
 const MapDispatchToProps = {
   onGetUser: UserOperations.getUser,
 };

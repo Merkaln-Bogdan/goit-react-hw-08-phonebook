@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import ContactSelector from "../../redux/Selectors/ContactSelectors";
+import ContactSelector from "../../redux/Selectors/Selectors";
 import style from "./Navigation.module.css";
 
 const Navigation = () => (
