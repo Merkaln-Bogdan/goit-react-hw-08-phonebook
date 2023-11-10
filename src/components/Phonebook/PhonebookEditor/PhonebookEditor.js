@@ -75,75 +75,77 @@ class PhonebookEditor extends Component {
       <>
         <div className={style.wrapperForm}>
           <form className={style.form} onSubmit={this.handleSubmit}>
+           <div className={style.wrapperInputFields}>
             <label className={style.inputField}>
-              Ім'я (First name)
-              <input
-                type="text"
-                value={firstName}
-                onChange={this.handleChange}
-                name="firstName"
-                required
-              />
-            </label>
-            <label  className={style.inputField}>
-              Прізвище (Last name)
-              <input
-                type="text"
-                value={lastName}
-                onChange={this.handleChange}
-                name="lastName"
-                required
-              />
-            </label>
-            <label   className={style.inputField}>
-              Номер (Phone number)
-              <input
-                type="text"
-                value={number}
-                onChange={this.handleChange}
-                name="number"
-                required
-              />
-            </label>
-            <label className={style.inputField}>
-              Email
-              <input
-                type="text"
-                value={email}
-                onChange={this.handleChange}
-                name="email"
-                required
-              />
-            </label>
-            <label  className={style.inputField}>
-              Місто (City)
-              <input
-                type="text"
-                value={city}
-                onChange={this.handleChange}
-                name="city"
-              />
-            </label> 
-            <label className={style.inputField}>
-              Спеціальність (Profession)
-              <input
-            
-                type="text"
-                value={profession}
-                onChange={this.handleChange}
-                name="profession"
-              />
-            </label>
-            <label className={style.inputField}>
-              Стать (Gender)
-              <input
-                type="text"
-                value={gender}
-                onChange={this.handleChange}
-                name="gender"
-                required
-              />
-            </label>
+                Ім'я (First name)
+                <input
+                  type="text"
+                  value={firstName}
+                  onChange={this.handleChange}
+                  name="firstName"
+                  required
+                />
+              </label>
+              <label  className={style.inputField}>
+                Прізвище (Last name)
+                <input
+                  type="text"
+                  value={lastName}
+                  onChange={this.handleChange}
+                  name="lastName"
+                  required
+                />
+              </label>
+              <label   className={style.inputField}>
+                Номер (Phone number)
+                <input
+                  type="text"
+                  value={number}
+                  onChange={this.handleChange}
+                  name="number"
+                  required
+                />
+              </label>
+              <label className={style.inputField}>
+                Email
+                <input
+                  type="text"
+                  value={email}
+                  onChange={this.handleChange}
+                  name="email"
+                  required
+                />
+              </label>
+              <label  className={style.inputField}>
+                Місто (City)
+                <input
+                  type="text"
+                  value={city}
+                  onChange={this.handleChange}
+                  name="city"
+                />
+              </label> 
+              <label className={style.inputField}>
+                Спеціальність (Profession)
+                <input
+              
+                  type="text"
+                  value={profession}
+                  onChange={this.handleChange}
+                  name="profession"
+                />
+              </label>
+              <label className={style.inputField}>
+                Стать (Gender)
+                <input
+                  type="text"
+                  value={gender}
+                  onChange={this.handleChange}
+                  name="gender"
+                  required
+                />
+              </label>
+           </div>
             <button className={style.buttonAdd} type="submit">
               Додати контакт (Add)
             </button>

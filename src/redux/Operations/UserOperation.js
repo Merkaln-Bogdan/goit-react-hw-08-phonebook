@@ -3,6 +3,7 @@ import Axios from "axios";
 
 Axios.defaults.baseURL = "https://phonebook-api-v2.onrender.com";
 
+
 const Token = (token) => {
   Axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
@@ -28,7 +29,9 @@ const loginUser = (user) => (dispatch) => {
         Token(response.data.token);
         dispatch(TaskPhoneBook.loginSuccess({ ...response.data }));
       })
-      .catch((error) => dispatch(TaskPhoneBook.loginError(error.message)));  
+      .catch((error) => {
+        dispatch(TaskPhoneBook.loginError(error.message))
+      });  
 };
 
 const getUser = () => (dispatch, getState) => {

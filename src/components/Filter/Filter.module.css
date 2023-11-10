@@ -8,11 +8,11 @@
 
   .labelMarkup {
     width: 100%;
-    margin: 5px;
     font-size: 30px;
   }
 
   .filterField {
+    width: 50%;
     display: flex;
     flex-direction: column;
     margin: 10px 0;
@@ -22,12 +22,16 @@
   
 
   @media (max-width: 767px) {
+    .wrapperFilter {
+      margin: 20px;
+    }
+
     .labelMarkup {
       font-size: 20px;
-      margin: 5px;
     }
 
     .filterField {
+        width: 100%;
         font-size: 14px;
       }
   }

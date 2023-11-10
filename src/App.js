@@ -25,6 +25,12 @@ class App extends Component {
   componentDidMount() {
     this.props.onGetUser();
   }
+
+  componentDidUpdate(prevProps) {
+    if(this.props.isAuthenticated !== prevProps.isAuthenticated){
+      this.props.onGetUser();
+    }
+  }
   
   render() {
     return (

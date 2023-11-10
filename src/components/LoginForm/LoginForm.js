@@ -97,6 +97,7 @@ class LoginForm extends Component {
                   value={email}
                   autoComplete="email"
                   onChange={this.handleChange}
+                  required
                 />
               </Form.Group>
               <Form.Group controlId="formBasicPassword">
@@ -109,6 +110,7 @@ class LoginForm extends Component {
                   value={password}
                   autoComplete="password"
                   onChange={this.handleChange}
+                  required
                 />
               </Form.Group>
 
