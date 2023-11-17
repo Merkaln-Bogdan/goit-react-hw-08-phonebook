@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import FadeLoader from "react-spinners/FadeLoader";
+// import { Blurhash } from "react-blurhash";
 import ContactsOperations from "../../redux/Operations/ContactsOperations";
 import ContactSelector from "../../redux/Selectors/Selectors";
 import camera  from "../../assets/camera.png"
@@ -26,7 +27,8 @@ class item extends Component {
     },
     previewImage: null,
     fileImage: null,
-    loading: true
+    loading: true,
+    imageLoaded: false
   }
   
   componentDidMount() {
@@ -36,9 +38,20 @@ class item extends Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.contact !== prevProps.contact) {
-      this.setState({contact: {...this.props.contact}, loading: false})
+      // new Promise((resolve, reject) => {
+      //   const img = new Image();
+      //   img.onload = () => resolve(img);
+      //   img.onerror = (...args) => reject(args);
+      //   img.src = this.props.contact.image;
+      //   this.setState({imageLoaded: true})
+      // });
+      this.setState({contact: this.props.contact, loading: false})
     }
   }
+
+  onLoad = () => {
+    this.setState({imageLoaded: true})
+  } 
 
   selectFile = (event) => {
     this.setState({
@@ -73,8 +86,20 @@ class item extends Component {
           />
          :
             <div className={"card p-2"} style={{maxWidth: "30rem", borderRadius: "10px", margin: "0 auto"}}>
-            
-            <img className={"card-img-top"} src={image || previewImage || camera} alt="Card_cap"/>
+
+
+            {/* {!imageLoaded ?
+              <Blurhash
+                hash={"LEHV6nWB2yk8pyo0adR*.7kCMdnj"}
+                width={460}
+                height={460}
+                resolutionX={32}
+                resolutionY={32}
+                punch={1}
+              />
+              : */}
+              <img loading="lazy" className={"card-img-top"} onLoad={this.onLoad} src={image || previewImage || camera} alt="Card_cap"/>
+            {/* } */}
           
             {!image && 
               <div>
