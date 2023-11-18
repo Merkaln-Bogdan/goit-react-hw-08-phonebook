@@ -1,16 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import FadeLoader from "react-spinners/FadeLoader";
 // import { Blurhash } from "react-blurhash";
 import ContactsOperations from "../../redux/Operations/ContactsOperations";
 import ContactSelector from "../../redux/Selectors/Selectors";
 import camera  from "../../assets/camera.png"
-
-const override = {
-  display: "block",
-  margin: "0 auto"
-};
-
+import Selectors from "../../redux/Selectors/Selectors";
 
 class item extends Component {
   state = { 
@@ -27,7 +21,6 @@ class item extends Component {
     },
     previewImage: null,
     fileImage: null,
-    loading: true,
     imageLoaded: false
   }
   
@@ -68,53 +61,30 @@ class item extends Component {
   }
 
   render() {
-
    const { firstName, lastName, number, city, profession, email, image, gender, id } = this.state.contact;
-   const { previewImage, loading } = this.state;
+   const { previewImage } = this.state;
+   const { loader } = this.props;
 
     return (
-      <>
-        {loading ? 
-          <FadeLoader
-            color={"#36d7b7"}
-            loading={loading}
-            cssOverride={override}
-            size={300}
-            height={20}
-            aria-label="Loading Spinner"
-            data-testid="loader"    
-          />
-         :
-            <div className={"card p-2"} style={{maxWidth: "30rem", borderRadius: "10px", margin: "0 auto"}}>
+      !loader &&
+        <div className={"card p-2"} style={{maxWidth: "30rem", borderRadius: "10px", margin: "0 auto"}}>
 
-
-            {/* {!imageLoaded ?
-              <Blurhash
-                hash={"LEHV6nWB2yk8pyo0adR*.7kCMdnj"}
-                width={460}
-                height={460}
-                resolutionX={32}
-                resolutionY={32}
-                punch={1}
-              />
-              : */}
               <img loading="lazy" className={"card-img-top"} onLoad={this.onLoad} src={image || previewImage || camera} alt="Card_cap"/>
-            {/* } */}
           
-            {!image && 
-              <div>
-                <label className={"m-2"}>
-                    Фото (Photo)
-                    <input
-                      type="file"
-                      name="avatar"
-                      onChange={this.selectFile}
-                      title="Photo"
-                      className={"mx-1"}
-                    />
+              {!image && 
+                <div>
+                  <label className={"m-2"}>
+                      Фото (Photo)
+                      <input
+                        type="file"
+                        name="avatar"
+                        onChange={this.selectFile}
+                        title="Photo"
+                        className={"mx-1"}
+                      />
 
-                </label>
-              </div>
+                  </label>
+                </div>
               }
               {previewImage && 
                 <button type="button" onClick={() => this.handleChangePhotoContact(id)}>
@@ -129,16 +99,15 @@ class item extends Component {
               <span className={"d-flex justify-content-between"}>Profession: <p className={"ml-2 font-weight-bold"}>{profession}</p></span>
               <span className={"d-flex justify-content-between"}>Gender: <p className={"ml-2 font-weight-bold"}>{gender}</p></span>
             </div>
-          </div>
-         }
-      </>
+        </div>
     );
   }
 }
 
 const MapStateToProps = (state) => {
   return {
-    contact: ContactSelector.getCurrentContact(state)
+    contact: ContactSelector.getCurrentContact(state),
+    loader: Selectors.getLoader(state)
   }
 }
 
@@ -146,4 +115,5 @@ const MapDispatchToProps = {
   getContact: ContactsOperations.getContact,
   changePhotoContact: ContactsOperations.changePhotoContact
 };
+
 export default connect(MapStateToProps, MapDispatchToProps)(item);

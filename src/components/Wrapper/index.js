@@ -4,9 +4,13 @@ import FadeLoader from "react-spinners/FadeLoader";
 import style from "./Wrapper.module.css"
 import Selectors from "../../redux/Selectors/Selectors";
 import phone_icon from "../../assets/icons_phone2.png"
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 
-const Wrapper = ({children, loader}) => {
+const Wrapper = (props) => {
+
+const {children, loader} = props;
+const {location} = useHistory();
 
     const override = {
         display: "block",
@@ -26,7 +30,7 @@ const Wrapper = ({children, loader}) => {
                         aria-label="Loading Spinner"  
                     /> 
                     :
-                    <img src={phone_icon} alt={"phone_logo"} className={style.logo}/>
+                    !location.pathname.includes('contact') ? <img src={phone_icon} alt={"phone_logo"} className={style.logo}/> : null
                 }
             </div>
     
