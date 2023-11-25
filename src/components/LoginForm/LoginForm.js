@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import FadeLoader from "react-spinners/FadeLoader";
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import "../../../node_modules/react-notifications/lib/notifications.css"
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Selector from "../../redux/Selectors/Selectors";
 import UserOperation from "../../redux/Operations/UserOperation";
-import Wrapper from "../Wrapper";
 
 class LoginForm extends Component {
 
@@ -72,17 +70,9 @@ class LoginForm extends Component {
     const {credential: {password, email}, loading} = this.state;
 
     return (
-    <Wrapper>
-      <Container className="container-fluid d-flex flex-column">
-          <FadeLoader
-            color={"#36d7b7"}
-            loading={loading}
-            cssOverride={this.override}
-            size={300}
-            height={20}
-            aria-label="Loading Spinner"  
-          />
-        
+    <>
+      <Container className="container-fluid d-flex flex-column mt-4">
+
         <Row className="justify-content-md-center">
           <Col xs lg="5">
             <h2>Увійдіть в ваш акаунт</h2>
@@ -128,7 +118,7 @@ class LoginForm extends Component {
       </Container>
 
       <NotificationContainer/>
-    </Wrapper>
+    </>
     );
   }
 }

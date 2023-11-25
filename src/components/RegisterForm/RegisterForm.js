@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import FadeLoader from "react-spinners/FadeLoader";
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import "../../../node_modules/react-notifications/lib/notifications.css"
 import "./Registerform.css";
@@ -66,15 +65,7 @@ class RegisterForm extends Component {
     const { user: {name, email, password}, loading } = this.state;
  
     return (
-      <Container className="container">
-        <FadeLoader
-            color={"#36d7b7"}
-            loading={loading}
-            cssOverride={this.override}
-            size={300}
-            height={20}
-            aria-label="Loading Spinner"  
-          />
+      <Container className="container mt-4">
 
         <Row className="justify-content-md-center">
           <Col xs lg="5">

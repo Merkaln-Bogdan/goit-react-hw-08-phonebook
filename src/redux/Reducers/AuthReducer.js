@@ -31,8 +31,10 @@ const error = createReducer(null, {
 
 const loader = createReducer(loading, {
   [TaskPhonebook.registersRequest]: () => true,
+  [TaskPhonebook.getContactRequest]: () => true,
   [TaskPhonebook.loginRequest]: () => true,
   [TaskPhonebook.getCurrentUserSuccess]: () => false,
+  [TaskPhonebook.getContactSuccess]: () => false,
   [TaskPhonebook.getCurrentUserError]: () => false,
   [TaskPhonebook.registersError]: () => false,
 });
