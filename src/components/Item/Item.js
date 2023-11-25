@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-// import { Blurhash } from "react-blurhash";
+import PuffLoader from "react-spinners/PuffLoader";
 import ContactsOperations from "../../redux/Operations/ContactsOperations";
 import ContactSelector from "../../redux/Selectors/Selectors";
 import camera  from "../../assets/camera.png"
@@ -31,18 +31,11 @@ class item extends Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.contact !== prevProps.contact) {
-      // new Promise((resolve, reject) => {
-      //   const img = new Image();
-      //   img.onload = () => resolve(img);
-      //   img.onerror = (...args) => reject(args);
-      //   img.src = this.props.contact.image;
-      //   this.setState({imageLoaded: true})
-      // });
       this.setState({contact: this.props.contact, loading: false})
     }
   }
 
-  onLoad = () => {
+  handleLoadImage = () => {
     this.setState({imageLoaded: true})
   } 
 
@@ -62,14 +55,25 @@ class item extends Component {
 
   render() {
    const { firstName, lastName, number, city, profession, email, image, gender, id } = this.state.contact;
-   const { previewImage } = this.state;
+   const { previewImage, imageLoaded } = this.state;
    const { loader } = this.props;
 
     return (
       !loader &&
-        <div className={"card p-2"} style={{maxWidth: "30rem", borderRadius: "10px", margin: "0 auto"}}>
+        <div className={"card p-2"} style={{maxWidth: "25rem", borderRadius: "10px", margin: "0 auto"}}>
 
-              <img loading="lazy" className={"card-img-top"} onLoad={this.onLoad} src={image || previewImage || camera} alt="Card_cap"/>
+                <div style={{position: "relative", width: "100%", height: !imageLoaded ? "400px" : "100%"}} >
+                {!imageLoaded && 
+                  <PuffLoader color="#36d7b7" cssOverride={{position: "absolute", transform: "translate(80%, 100%)"}} size={150}/> 
+                }
+      
+                <img 
+                  loading="lazy" 
+                  className={"card-img-top"} 
+                  onLoad={this.handleLoadImage} 
+                  src={image || previewImage || camera} alt="Card_cap"
+                />
+                  </div>
           
               {!image && 
                 <div>
