@@ -11,15 +11,17 @@
 }
 
 .itemLink {
+  width: 100%;
   display: flex;
+  margin: 0 20px;
   justify-content: space-between;
+  align-items: center;
   text-decoration: none;
   color: black;
 }
 
 .dataPerson {
-  width: 220px;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
 }
 
@@ -49,11 +51,14 @@ button:hover {
 
   .itemLink {
     flex-direction: column;
+    align-items: start;
   }
 
   .dataPerson {
-    font-size: 20px;
     width: auto;
+    font-size: 16px;
+    font-weight: 600;
+    
   }
 
   .dataPersonNumber{

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import style from "../PhoneBook.module.css";
-import alertSlideTransition from "../../../stylesTransition/AlertTransition.module.css";
 import { connect } from "react-redux";
+import alertSlideTransition from "../../../stylesTransition/AlertTransition.module.css";
 import ContactsOperations from "../../../redux/Operations/ContactsOperations";
 import ContactSelector from "../../../redux/Selectors/Selectors";
 import AlertWindow from "../../AlertWindow/AlertWindow";
@@ -77,7 +77,7 @@ class PhonebookEditor extends Component {
           <form className={style.form} onSubmit={this.handleSubmit}>
            <div className={style.wrapperInputFields}>
             <label className={style.inputField}>
-                Ім'я (First name)
+                Ім'я
                 <input
                   type="text"
                   value={firstName}
@@ -87,7 +87,7 @@ class PhonebookEditor extends Component {
                 />
               </label>
               <label  className={style.inputField}>
-                Прізвище (Last name)
+                Прізвище
                 <input
                   type="text"
                   value={lastName}
@@ -97,7 +97,7 @@ class PhonebookEditor extends Component {
                 />
               </label>
               <label   className={style.inputField}>
-                Номер (Phone number)
+                Номер
                 <input
                   type="text"
                   value={number}
@@ -117,7 +117,7 @@ class PhonebookEditor extends Component {
                 />
               </label>
               <label  className={style.inputField}>
-                Місто (City)
+                Місто
                 <input
                   type="text"
                   value={city}
@@ -126,7 +126,7 @@ class PhonebookEditor extends Component {
                 />
               </label> 
               <label className={style.inputField}>
-                Спеціальність (Profession)
+                Спеціальність
                 <input
               
                   type="text"
@@ -136,7 +136,7 @@ class PhonebookEditor extends Component {
                 />
               </label>
               <label className={style.inputField}>
-                Стать (Gender)
+                Стать
                 <input
                   type="text"
                   value={gender}
@@ -147,7 +147,7 @@ class PhonebookEditor extends Component {
               </label>
            </div>
             <button className={style.buttonAdd} type="submit">
-              Додати контакт (Add)
+              Додати контакт
             </button>
           </form>
         </div>
