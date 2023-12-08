@@ -1,28 +1,34 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
+
+import withTranslation from "../../hook"
 import ContactSelector from "../../redux/Selectors/Selectors";
 import style from "./Navigation.module.css";
 
-const Navigation = () => (
-  <div className={style.wrapper}>
-    <NavLink to="/" exact className={style.link}>
-      Home
-    </NavLink>
+const Navigation = ({transationHook}) => {
 
-    <NavLink to="/auth/signin" exact className={style.link}>
-      Log In
-    </NavLink>
+  return (
+    <div className={style.wrapper}>
+      <NavLink to="/" exact className={style.link}>
+        {transationHook("home")}
+      </NavLink>
 
-    <NavLink to="/auth/register" exact className={style.link}>
-      Sign Up
-    </NavLink>
+      <NavLink to="/auth/signin" exact className={style.link}>
+        {transationHook("login")}
+      </NavLink>
 
-    <NavLink to="/api/contacts" exact className={style.link}>
-      Phonebook
-    </NavLink>
-  </div>
-);
+      <NavLink to="/auth/register" exact className={style.link}>
+        {transationHook("signup")}
+      </NavLink>
+
+      <NavLink to="/api/contacts" exact className={style.link}>
+        {transationHook("phonebook")}
+      </NavLink>
+    </div>
+  )
+  
+};
 
 const mapStateToProps = (state) => {
   return {
@@ -30,4 +36,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, null)(Navigation);
+export default connect(mapStateToProps, null)(withTranslation(Navigation));

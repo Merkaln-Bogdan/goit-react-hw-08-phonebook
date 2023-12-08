@@ -1,7 +1,8 @@
 import TaskPhoneBook from "../TaskPhonebook";
 import Axios from "axios";
 
-Axios.defaults.baseURL = "https://phonebook-api-v2.onrender.com";
+// Axios.defaults.baseURL = "https://phonebook-api-v2.onrender.com";
+Axios.defaults.baseURL = "http://127.0.0.1:4040";
 
 
 const Token = (token) => {
@@ -88,10 +89,22 @@ const createUserAvatar = (file) => (dispatch) => {
     );
 };
 
+const getUpdateCurrentUser = (user) => (dispatch) => {
+  dispatch(TaskPhoneBook.getCurrentUserRequest());
+  Axios.patch("/auth/update", user)
+      .then((response) => {
+        dispatch(TaskPhoneBook.getCurrentUserSuccess(response.data));
+      })
+      .catch((error) => {
+        dispatch(TaskPhoneBook.getCurrentUserError(error.message))
+      });  
+};
+
 export default {
   registration,
   loginUser,
   getUser,
   logOutUser,
   createUserAvatar,
+  getUpdateCurrentUser
 };

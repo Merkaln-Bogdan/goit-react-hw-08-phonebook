@@ -1,13 +1,17 @@
 import React from "react";
-import style from "./Filter.module.css";
 import { connect } from "react-redux";
+import { useTranslation } from "react-i18next";
+import style from "./Filter.module.css";
 import taskPhonebook from "../../redux/TaskPhonebook";
 import PropTypes from "prop-types";
 
-const Filter = ({ value, onChangeFilter }) => (
-  <div className={style.wrapperFilter}>
+const Filter = ({ value, onChangeFilter }) => {
+  const { t } = useTranslation();
+  
+  return (
+    <div className={style.wrapperFilter}>
     <label className={style.labelMarkup}>
-      Знайти номер (Search)
+      {t("search")}
       <input
         className={style.filterField}
         type="text"
@@ -16,7 +20,8 @@ const Filter = ({ value, onChangeFilter }) => (
       />
     </label>
   </div>
-);
+  )
+};
 
 const MapStateToProps = (state) => ({
   value: state.contacts.filter,

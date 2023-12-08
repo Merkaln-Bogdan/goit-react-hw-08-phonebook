@@ -35,6 +35,10 @@ const changeUserAvatarRequest = createAction("contacts/changeUserAvatarRequest")
 const changeUserAvatarSuccess = createAction("contacts/changeUserAvatarSuccess");
 const changeUserAvatarError = createAction("contacts/changeUserAvatarError");
 
+const getUserUpdateRequest = createAction("user/getUserUpdateRequest");
+const getUserUpdateSuccess = createAction("user/getUserUpdateSuccess");
+const getUserUpdateError = createAction("user/getUserUpdateErrorError");
+
 const changePhotoContactRequest = createAction("contacts/changePhotoContactRequest");
 const changePhotoContactSuccess = createAction("contacts/changePhotoContactSuccess");
 const changePhotoContactError = createAction("contacts/changePhotoContactError");
@@ -72,5 +76,8 @@ export default {
   getContactError,
   changePhotoContactRequest,
   changePhotoContactSuccess,
-  changePhotoContactError
+  changePhotoContactError,
+  getUserUpdateRequest,
+  getUserUpdateSuccess,
+  getUserUpdateError
 };

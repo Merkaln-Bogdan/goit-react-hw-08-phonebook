@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PuffLoader from "react-spinners/PuffLoader";
+import withTranslation from "../../hook";
 import ContactsOperations from "../../redux/Operations/ContactsOperations";
 import ContactSelector from "../../redux/Selectors/Selectors";
 import camera  from "../../assets/camera.png"
@@ -22,6 +23,11 @@ class item extends Component {
     previewImage: null,
     fileImage: null,
     imageLoaded: false
+  }
+
+  override = {
+    position: "absolute", 
+    transform: window?.innerWidth < 414 ? "translate(60%, 100%)" : "translate(80%, 100%)"
   }
   
   componentDidMount() {
@@ -56,7 +62,7 @@ class item extends Component {
   render() {
    const { firstName, lastName, number, city, profession, email, image, gender, id } = this.state.contact;
    const { previewImage, imageLoaded } = this.state;
-   const { loader } = this.props;
+   const { loader, transationHook } = this.props;
 
     return (
       !loader &&
@@ -64,7 +70,7 @@ class item extends Component {
 
                 <div style={{position: "relative", width: "100%", height: !imageLoaded ? "400px" : "100%"}} >
                 {!imageLoaded && 
-                  <PuffLoader color="#36d7b7" cssOverride={{position: "absolute", transform: "translate(80%, 100%)"}} size={150}/> 
+                  <PuffLoader color="#36d7b7" cssOverride={this.override} size={150}/> 
                 }
       
                 <img 
@@ -97,11 +103,11 @@ class item extends Component {
               }
             <div className={"card-body"}>
               <h5 className={"card-title font-weight-bold"}>{firstName} {lastName}</h5>
-              <span className={"d-flex justify-content-between"}>Phone number: <p className={"ml-2 font-weight-bold"}>{number}</p></span>
+              <span className={"d-flex justify-content-between"}>{transationHook("phoneNumber")}: <p className={"ml-2 font-weight-bold"}>{number}</p></span>
               <span className={"d-flex justify-content-between"}>Email: <p className={"ml-2 font-weight-bold"}>{email}</p></span>
-              <span className={"d-flex justify-content-between"}>City: <p className={"ml-2 font-weight-bold"}>{city}</p></span>
-              <span className={"d-flex justify-content-between"}>Profession: <p className={"ml-2 font-weight-bold"}>{profession}</p></span>
-              <span className={"d-flex justify-content-between"}>Gender: <p className={"ml-2 font-weight-bold"}>{gender}</p></span>
+              <span className={"d-flex justify-content-between"}>{transationHook("city")}: <p className={"ml-2 font-weight-bold"}>{city}</p></span>
+              <span className={"d-flex justify-content-between"}>{transationHook("profession")}: <p className={"ml-2 font-weight-bold"}>{profession}</p></span>
+              <span className={"d-flex justify-content-between"}>{transationHook("gender")}: <p className={"ml-2 font-weight-bold"}>{gender}</p></span>
             </div>
         </div>
     );
@@ -120,4 +126,4 @@ const MapDispatchToProps = {
   changePhotoContact: ContactsOperations.changePhotoContact
 };
 
-export default connect(MapStateToProps, MapDispatchToProps)(item);
+export default connect(MapStateToProps, MapDispatchToProps)(withTranslation(item));
