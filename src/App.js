@@ -9,7 +9,7 @@ import PublicRoute from "./PublicRoute";
 import PrivateRoute from "./PrivateRoute";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
 import LoginForm from "./components/LoginForm/LoginForm";
-import { Home } from "./components/HomePage/Homepage";
+import Home from "./components/HomePage/Homepage";
 import Footer from "./components/Footer";
 
 import Phonebook from "./components/Phonebook/Phonebook";

@@ -27,7 +27,11 @@ const rus = {
   female: "Женский",
   contacts: "Контакты",
   noContacts: "Нет контактов",
-  phoneNumber: "Номер тел."
+  phoneNumber: "Номер тел.",
+  hello: "Hello!",
+  hereCreateNumbers: "Здесь вы можете создать свою телефонную книгу и вести учет контактных номеров",
+  youCanFindNumber: "Также вы можете с легкостью найти любой номер, если их станет слишком много",
+  justEnterData: "Просто введите данные в поисковое поле"
 }
 
 const ukr = {
@@ -47,7 +51,11 @@ const ukr = {
   female: "Жіноча",
   contacts: "Контакти",
   noContacts: "Немає контактів",
-  phoneNumber: "Номер тел."
+  phoneNumber: "Номер тел.",
+  hello: "Вітаю!",
+  hereCreateNumbers: "Тут ви можете створити свою телефону книгу та вести облік контакних номерів",
+  youCanFindNumber: "Також ви можете з легкістю знайти будь який номер якщо їх стане надто багато",
+  justEnterData: "Просто введіть дані в пошукове поле"
 }
 
 const eng = {
@@ -67,7 +75,12 @@ const eng = {
   male: "Male",
   female: "Female",
   noContacts: "No contacts",
-  phoneNumber: "Phone number"
+  phoneNumber: "Phone number",
+  hello: "Привет!",
+  hereCreateNumbers: "Here you can create your phone book and keep track of contact numbers.",
+  youCanFindNumber: "Also, you can easily find any number if there are too many of them",
+  justEnterData: "Just enter data in the search field"
+  
 }
 
 export {rus, ukr, eng}
