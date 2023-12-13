@@ -20,7 +20,7 @@ class PhonebookEditor extends Component {
         profession: "", 
         image: null, 
         email: "",
-        gender: ""
+        gender: "male"
       },
 
       alertName: false

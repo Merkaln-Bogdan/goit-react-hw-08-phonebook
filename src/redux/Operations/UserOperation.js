@@ -36,9 +36,7 @@ const loginUser = (user) => (dispatch) => {
 };
 
 const getUser = () => (dispatch, getState) => {
-  const {
-    auth: { token: persistedtoken },
-  } = getState();
+  const { auth: { token: persistedtoken } } = getState();
 
   if (!persistedtoken) {
     return;
