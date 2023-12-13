@@ -140,7 +140,7 @@ class PhonebookEditor extends Component {
                 />
               </label>
               <label className={style.inputField}>
-                {transationHook("sex")}
+                {transationHook("gender")}
                 <select
                   type="select"
                   value={gender}
