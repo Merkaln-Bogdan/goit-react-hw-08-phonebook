@@ -1,9 +1,3 @@
-export const LANGS = [
-    { label: "Українська", code: "ua" , flag: "fi fi-ua"},
-    { label: "English", code: "en", flag: "fi fi-gb"},
-    { label: "Русский", code: "ru", flag: "fi fi-ru" },
-  ];
-
 export const LANGUAGES = [
   { label: "Українська", code: "ua" , flag: "🇺🇦" },
   { label: "English", code: "en", flag: "🇬🇧"},
@@ -29,9 +23,12 @@ const rus = {
   noContacts: "Нет контактов",
   phoneNumber: "Номер тел.",
   hello: "Hello!",
+  password: "Пароль",
   hereCreateNumbers: "Здесь вы можете создать свою телефонную книгу и вести учет контактных номеров",
   youCanFindNumber: "Также вы можете с легкостью найти любой номер, если их станет слишком много",
-  justEnterData: "Просто введите данные в поисковое поле"
+  justEnterData: "Просто введите данные в поисковое поле",
+  signIn: "Войти в аккаунт",
+  signUp: "Регистрация" 
 }
 
 const ukr = {
@@ -52,10 +49,13 @@ const ukr = {
   contacts: "Контакти",
   noContacts: "Немає контактів",
   phoneNumber: "Номер тел.",
+  password: "Пароль",
   hello: "Вітаю!",
   hereCreateNumbers: "Тут ви можете створити свою телефону книгу та вести облік контакних номерів",
   youCanFindNumber: "Також ви можете з легкістю знайти будь який номер якщо їх стане надто багато",
-  justEnterData: "Просто введіть дані в пошукове поле"
+  justEnterData: "Просто введіть дані в пошукове поле",
+  signIn: "Увійти в акаунт",
+  signUp: "Регістрація" 
 }
 
 const eng = {
@@ -76,11 +76,13 @@ const eng = {
   female: "Female",
   noContacts: "No contacts",
   phoneNumber: "Phone number",
-  hello: "Привет!",
+  password: "Password",
+  hello: "Hello!",
   hereCreateNumbers: "Here you can create your phone book and keep track of contact numbers.",
   youCanFindNumber: "Also, you can easily find any number if there are too many of them",
-  justEnterData: "Just enter data in the search field"
-  
+  justEnterData: "Just enter data in the search field",
+  signIn: "Sign in to the account",
+  signUp: "Sign Up" 
 }
 
 export {rus, ukr, eng}

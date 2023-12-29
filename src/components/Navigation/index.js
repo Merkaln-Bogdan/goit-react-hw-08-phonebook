@@ -2,7 +2,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 
-import withTranslation from "../../hook"
 import ContactSelector from "../../redux/Selectors/Selectors";
 import style from "./Navigation.module.css";
 
@@ -36,4 +35,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, null)(withTranslation(Navigation));
+export default connect(mapStateToProps, null)(Navigation);

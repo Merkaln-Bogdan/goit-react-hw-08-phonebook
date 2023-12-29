@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import "../../../node_modules/react-notifications/lib/notifications.css"
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
+import withTranslation from "../../hook";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Selector from "../../redux/Selectors/Selectors";
 import UserOperation from "../../redux/Operations/UserOperation";
@@ -68,6 +69,7 @@ class LoginForm extends Component {
 
   render() {
     const {credential: {password, email}, loading} = this.state;
+    const {transationHook} = this.props
 
     return (
     <>
@@ -75,7 +77,7 @@ class LoginForm extends Component {
 
         <Row className="justify-content-md-center">
           <Col xs lg="5">
-            <h2>Увійдіть в ваш акаунт</h2>
+            <h2>{transationHook("signIn")}</h2>
             <Form>
               <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email</Form.Label>
@@ -91,7 +93,7 @@ class LoginForm extends Component {
                 />
               </Form.Group>
               <Form.Group controlId="formBasicPassword">
-                <Form.Label>пароль (password)</Form.Label>
+                <Form.Label>{transationHook("password")}</Form.Label>
                 <Form.Control
                   type="password"
                   placeholder="enter password"
@@ -110,7 +112,7 @@ class LoginForm extends Component {
                 onClick={this.handleSubmit}
                 disabled={loading}
               >
-                Ввійти в акаунт (Sign in)
+                {transationHook("signIn")}
               </Button>
             </Form>
           </Col>
@@ -128,4 +130,4 @@ const MapStateToProps = (state) => ({
   error: Selector.getError(state),
 });
 
-export default connect(MapStateToProps, { onLogin: UserOperation.loginUser})(LoginForm);
+export default connect(MapStateToProps, { onLogin: UserOperation.loginUser})(withTranslation(LoginForm));

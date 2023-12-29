@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {NotificationContainer, NotificationManager} from 'react-notifications';
+import withTranslation from "../../hook";
 import "../../../node_modules/react-notifications/lib/notifications.css"
 import "./Registerform.css";
 import Selector from "../../redux/Selectors/Selectors";
@@ -63,21 +64,22 @@ class RegisterForm extends Component {
 
   render() {
     const { user: {name, email, password}, loading } = this.state;
+    const {transationHook} = this.props;
  
     return (
       <Container className="container mt-4">
 
         <Row className="justify-content-md-center">
           <Col xs lg="5">
-            <h2>Регістрація (Sign up)</h2>
+            <h2>{transationHook("signUp")}</h2>
             <Form type="form">
               <Form.Group controlId="firstName">
-                <Form.Label>ім'я</Form.Label>
+                <Form.Label>{transationHook("name")}</Form.Label>
                 <Form.Control
                   type="name"
                   name="name"
                   value={name}
-                  placeholder="Имя"
+                  placeholder={transationHook("name")}
                   onChange={this.handleChange}
                 />
               </Form.Group>
@@ -89,19 +91,19 @@ class RegisterForm extends Component {
                   type="email"
                   name="email"
                   value={email}
-                  placeholder="введите email"
+                  placeholder="Email"
                   onChange={this.handleChange}
                 />
               </Form.Group>
               <Form.Group controlId="password">
-                <Form.Label>Пароль</Form.Label>
+                <Form.Label>{transationHook("password")}</Form.Label>
                 <Form.Control
                   suggested="password"
                   autoComplete="new-password"
                   type="password"
                   name="password"
                   value={password}
-                  placeholder="пароль"
+                  placeholder={transationHook("password")}
                   onChange={this.handleChange}
                 />
               </Form.Group>
@@ -112,8 +114,7 @@ class RegisterForm extends Component {
                 onClick={this.handleSubmit}
                 disabled={loading}
               >
-                РЕГІСТРАЦІЯ
-                (Sign up)
+                {transationHook("signUp")}
               </Button>
             </Form>
           </Col>
@@ -134,4 +135,4 @@ const MapDispatchToProps = {
   onRegister: UserOperation.registration,
 };
 
-export default connect(MapStateToProps, MapDispatchToProps)(RegisterForm);
+export default connect(MapStateToProps, MapDispatchToProps)(withTranslation(RegisterForm));

@@ -33,7 +33,13 @@ class App extends Component {
     }
 
     if(this.props.user !== prevProps.user){
-      i18n.changeLanguage(this.props.user.lang)
+      const storeLang = localStorage.getItem("lang")
+      if(this.props.user.lang){
+        localStorage.removeItem("lang")
+        i18n.changeLanguage(this.props.user.lang)
+      }else{
+        i18n.changeLanguage(storeLang)
+      } 
     }
   }
   

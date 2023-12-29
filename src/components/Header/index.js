@@ -11,28 +11,28 @@ import UserMenu from "../UserMenu";
 
 
 class Header extends Component {
- 
-    componentDidMount() {
-        i18n.changeLanguage(this.props.user.lang)
-    }
-
    
     handleChangeLanguageApp = (e) => {
         const {value} = e.target;
+        localStorage.setItem("lang", value)
         i18n.changeLanguage(this.props.user.lang)
-        this.props.onGetUpdateUser({...this.props.user, lang: value})
-       
+        const {isAuthenticated, user} = this.props
+
+        if(isAuthenticated) {
+            this.props.onGetUpdateUser({...user, lang: value})
+        }
     }
 
     render(){
-        const {isAuthenticated, user} = this.props
- 
+        const {isAuthenticated, user, transationHook} = this.props
         return (
             <div className={style.navigation}>
-                <LanguageNav user={user} handleChangeLanguageApp={this.handleChangeLanguageApp}/>
+                <LanguageNav lang={user.lang} handleChangeLanguageApp={this.handleChangeLanguageApp}/>
             
-                <Navigation />
-                {isAuthenticated && <UserMenu />}
+                <Navigation transationHook={transationHook}/>
+                {isAuthenticated && 
+                    <UserMenu />
+                }
             </div>
         )
     }
