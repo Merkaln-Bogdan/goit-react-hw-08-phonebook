@@ -16,7 +16,6 @@ import ContactOperations from "../../redux/Operations/ContactsOperations";
 
 function Phonebook({ contacts, value, onRemovePersonData, transationHook }) {
 
-
   return (
     <div className={style.wrapper}>
       
@@ -34,7 +33,7 @@ function Phonebook({ contacts, value, onRemovePersonData, transationHook }) {
         <h2 className={style.titleContacts}>{transationHook("contacts")}</h2>
 
         <PhonebookEditor />
-        {contacts.length > 0 ? (
+        {contacts.length > 0 || value.length > 0? (
           <CSSTransition
             in={value.length > 1 || contacts.length > 1}
             timeout={250}
@@ -44,7 +43,7 @@ function Phonebook({ contacts, value, onRemovePersonData, transationHook }) {
             <Filter />
           </CSSTransition>
         ) : (
-          <h2 className={style.TitleContacts}>Немає контактів</h2>
+          <h2 className={style.TitleContacts}>{transationHook("noContacts")}</h2>
         )} 
         <div className={style.ContactListWrapper}>
           <TransitionGroup component="ul" className={style.contactList}>

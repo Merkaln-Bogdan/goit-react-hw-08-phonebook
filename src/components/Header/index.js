@@ -15,13 +15,19 @@ class Header extends Component {
     handleChangeLanguageApp = (e) => {
         const {value} = e.target;
         localStorage.setItem("lang", value)
-        i18n.changeLanguage(this.props.user.lang)
+        i18n.changeLanguage(value)
         const {isAuthenticated, user} = this.props
 
         if(isAuthenticated) {
             this.props.onGetUpdateUser({...user, lang: value})
         }
     }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.user !== prevProps.user) {
+            i18n.changeLanguage(this.props.user.lang)
+        }
+      }
 
     render(){
         const {isAuthenticated, user, transationHook} = this.props

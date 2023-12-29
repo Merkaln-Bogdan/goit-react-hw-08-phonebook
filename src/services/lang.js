@@ -5,7 +5,7 @@ import { eng, rus, ukr } from "../constants/languages";
   i18n
   .use(initReactI18next)
   .init( {
-    fallbackLng: 'ru',
+    fallbackLng: 'ua',
     // lng: lang,
     interpolation: {
       escapeValue: false,
