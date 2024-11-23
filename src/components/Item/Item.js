@@ -7,6 +7,16 @@ import camera  from "../../assets/camera.png"
 import Selectors from "../../redux/Selectors/Selectors";
 
 class item extends Component {
+  constructor() {
+    this.infoList = [
+      {key: "Phone number", value: "number"},
+      {key: "Email", value: "email"},
+      {key: "City", value: "city"},
+      {key: "Profession", value: "profession"},
+      {key: "Gender", value: "gender"},
+      {key: "Email", value: "email"},
+    ]
+  }
   state = { 
     contact: {
       id: null,
@@ -61,8 +71,7 @@ class item extends Component {
     return (
       !loader &&
         <div className={"card p-2"} style={{maxWidth: "25rem", borderRadius: "10px", margin: "0 auto"}}>
-
-                <div style={{position: "relative", width: "100%", height: !imageLoaded ? "400px" : "100%"}} >
+             <div style={{position: "relative", width: "100%", height: !imageLoaded ? "400px" : "100%"}} >
                 {!imageLoaded && 
                   <PuffLoader color="#36d7b7" cssOverride={{position: "absolute", transform: "translate(80%, 100%)"}} size={150}/> 
                 }
@@ -95,13 +104,17 @@ class item extends Component {
                   Upload
                 </button>
               }
+               
             <div className={"card-body"}>
               <h5 className={"card-title font-weight-bold"}>{firstName} {lastName}</h5>
-              <span className={"d-flex justify-content-between"}>Phone number: <p className={"ml-2 font-weight-bold"}>{number}</p></span>
-              <span className={"d-flex justify-content-between"}>Email: <p className={"ml-2 font-weight-bold"}>{email}</p></span>
-              <span className={"d-flex justify-content-between"}>City: <p className={"ml-2 font-weight-bold"}>{city}</p></span>
-              <span className={"d-flex justify-content-between"}>Profession: <p className={"ml-2 font-weight-bold"}>{profession}</p></span>
-              <span className={"d-flex justify-content-between"}>Gender: <p className={"ml-2 font-weight-bold"}>{gender}</p></span>
+              {this.infoList.map(el => (
+                <span className={"d-flex justify-content-between"}>
+                  {el.key}: 
+                  <p className={"ml-2 font-weight-bold"}>
+                    {this.state.contact[el.value]}
+                  </p>
+                </span>
+              ))}
             </div>
         </div>
     );

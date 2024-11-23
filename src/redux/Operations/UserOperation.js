@@ -1,7 +1,7 @@
 import TaskPhoneBook from "../TaskPhonebook";
 import Axios from "axios";
 
-Axios.defaults.baseURL = "https://phonebook-api-v2.onrender.com";
+Axios.defaults.baseURL = "https://phonebook-app-pearl.vercel.app";
 
 
 const Token = (token) => {
