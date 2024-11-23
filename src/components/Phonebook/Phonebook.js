@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
+import withTranslation from "../../hook"
 
 import style from "./PhoneBook.module.css";
 import PhonebookEditor from "./PhonebookEditor/PhonebookEditor";
@@ -11,11 +12,9 @@ import slideTransition from "../../stylesTransition/PhonebookListSlide.module.cs
 import PhoneFilter from "../../stylesTransition/PhoneFilter.module.css";
 import titleSlideTransition from "../../stylesTransition/TitleSlideTransition.module.css";
 import ContactSelector from "../../redux/Selectors/Selectors";
-
 import ContactOperations from "../../redux/Operations/ContactsOperations";
 
-function Phonebook({ contacts, value, onRemovePersonData }) {
-
+function Phonebook({ contacts, value, onRemovePersonData, transationHook }) {
 
   return (
     <div className={style.wrapper}>
@@ -31,10 +30,10 @@ function Phonebook({ contacts, value, onRemovePersonData }) {
         </CSSTransition>
 
       <div className={style.phoneList}>
-        <h2 className={style.titleContacts}>Контакти</h2>
+        <h2 className={style.titleContacts}>{transationHook("contacts")}</h2>
 
         <PhonebookEditor />
-        {contacts.length > 0 ? (
+        {contacts.length > 0 || value.length > 0? (
           <CSSTransition
             in={value.length > 1 || contacts.length > 1}
             timeout={250}
@@ -44,7 +43,7 @@ function Phonebook({ contacts, value, onRemovePersonData }) {
             <Filter />
           </CSSTransition>
         ) : (
-          <h2 className={style.TitleContacts}>Немає контактів</h2>
+          <h2 className={style.TitleContacts}>{transationHook("noContacts")}</h2>
         )} 
         <div className={style.ContactListWrapper}>
           <TransitionGroup component="ul" className={style.contactList}>
@@ -79,7 +78,7 @@ const MapStateToProps = (state) => ({
 const MapDispatchToProps = {
   onRemovePersonData: ContactOperations.removeContact,
 };
-export default connect(MapStateToProps, MapDispatchToProps)(Phonebook);
+export default connect(MapStateToProps, MapDispatchToProps)(withTranslation(Phonebook));
 
 Phonebook.propTypes = {
   contacts: PropTypes.array,

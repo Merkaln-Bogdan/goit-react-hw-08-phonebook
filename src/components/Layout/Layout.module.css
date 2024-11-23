@@ -16,6 +16,13 @@ input {
     border-radius: 8px;
 }
 
+select {
+    height: 40px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 8px;
+}
+
 @media (max-width: 767px) {
     /* .wrapper {
       padding-right: 10px;

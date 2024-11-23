@@ -1,6 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
 const isAuthenticated = (state) => state.auth.token;
 const getUserName = (state) => state.auth.user.name;
+const getUser = (state) => state.auth.user;
 const getContacts = (state) => state.contacts.item;
 const getCurrentContact = (state) => state.contact.contact;
 const getStatusLogIn = (state) => state.auth.loginUser;
@@ -28,5 +29,6 @@ export default {
   getStatusLogIn,
   visibleContacts,
   getLoader,
-  getError
+  getError,
+  getUser
 };

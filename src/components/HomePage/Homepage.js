@@ -1,14 +1,20 @@
 import React from "react";
+import withTranslation from "../../hook";
 import style from "./HomePage.module.css";
 
-export const Home = () => (
+const Home = ({transationHook}) => (
   <div className={style.Home}>
-    <h2 className={style.TitleHello}>Вітаю!</h2>
+    <h2 className={style.TitleHello}>{transationHook("hello")}</h2>
     <p className={style.Description}>
-      Тут ви можете створити свою телефону книгу та вести облік контакних номерів. Також ви можете з легкістю знайти будь який номер якщо їх стане надто багато. Просто введіть дані в пошукове поле
+      {transationHook("hereCreateNumbers")}
     </p>
     <p className={style.Description}>
-      Here you can create your phone book and keep track of contact numbers. Also, you can easily find any number if there are too many of them. Just enter data in the search field
+      {transationHook("youCanFindNumber")}
+    </p>
+    <p className={style.Description}>
+      {transationHook("justEnterData")}
     </p>
   </div>
 );
+
+export default (withTranslation(Home));

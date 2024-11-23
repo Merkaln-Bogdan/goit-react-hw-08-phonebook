@@ -1,5 +1,4 @@
 .WrapperUserMenu {
-  width: 158px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,17 +13,24 @@
   font-size: 16px;
   font-weight: 600;
 }
+
 .ButtonLogOut {
+  width: 30px;
+  height: 30px;
   margin: 7px;
-  font-size: 20px;
-  color: rgb(1, 1, 31);
-  background-color: rgb(186, 186, 216);
+  font-size: 16px;
+  background-color: rgb(48, 48, 69);
   border-radius: 9999px;
+  border: none;
+}
+
+.LogOutImg {
+  vertical-align: baseline;
 }
 
 .WrapperAvatar {
-  width: 70px;
-  height: 70px;
+  width: 40px;
+  height: 40px;
   position: relative;
 }
 

@@ -35,8 +35,8 @@ class UserMenu extends Component {
             className={style.Avatar}
             src={previewImage || avatar || defaultAvatar}
             alt="avatar"
-            width={70}
-            height={70}
+            width={40}
+            height={40}
           />
           <input
             type="file"
@@ -51,9 +51,9 @@ class UserMenu extends Component {
           </button>
         )}
 
-        <span className={style.BlockName}>Wellcome, {name}</span>
+        <span className={style.BlockName}>{name}</span>
         <button className={style.ButtonLogOut} type="button" onClick={logOut}>
-          <img src={logOutButton} alt="logout button" width="20" />
+          <img src={logOutButton} alt="logout button" width="15" className={style.LogOutImg}/>
         </button>
       </div>
     );

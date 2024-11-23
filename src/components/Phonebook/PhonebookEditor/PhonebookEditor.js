@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import style from "../PhoneBook.module.css";
 import { connect } from "react-redux";
+import withTranslation from "../../../hook.js"
 import alertSlideTransition from "../../../stylesTransition/AlertTransition.module.css";
 import ContactsOperations from "../../../redux/Operations/ContactsOperations";
 import ContactSelector from "../../../redux/Selectors/Selectors";
 import AlertWindow from "../../AlertWindow/AlertWindow";
 import { CSSTransition } from "react-transition-group";
 import UserOperation from "../../../redux/Operations/UserOperation";
+
 
 class PhonebookEditor extends Component {
   state = { 
@@ -18,7 +20,7 @@ class PhonebookEditor extends Component {
         profession: "", 
         image: null, 
         email: "",
-        gender: ""
+        gender: "male"
       },
 
       alertName: false
@@ -30,6 +32,7 @@ class PhonebookEditor extends Component {
       this.props.onFetchContacts();
     }
   }
+
 
   handleChange = (e) => {
     const { name, value } = e.target;
@@ -64,20 +67,21 @@ class PhonebookEditor extends Component {
           city: "", 
           profession: "", 
           email: "",
-          gender: ""
+          gender: "male"
         }});
     }
   };
   render() {
-  
+    const {transationHook} = this.props;
     const { firstName, lastName, number, city, profession, email, gender } = this.state.contact;
+    
     return (
       <>
         <div className={style.wrapperForm}>
           <form className={style.form} onSubmit={this.handleSubmit}>
            <div className={style.wrapperInputFields}>
             <label className={style.inputField}>
-                Ім'я
+                {transationHook("name")}
                 <input
                   type="text"
                   value={firstName}
@@ -87,7 +91,7 @@ class PhonebookEditor extends Component {
                 />
               </label>
               <label  className={style.inputField}>
-                Прізвище
+                {transationHook("surname")}
                 <input
                   type="text"
                   value={lastName}
@@ -97,7 +101,7 @@ class PhonebookEditor extends Component {
                 />
               </label>
               <label   className={style.inputField}>
-                Номер
+               {transationHook("number")}
                 <input
                   type="text"
                   value={number}
@@ -117,7 +121,7 @@ class PhonebookEditor extends Component {
                 />
               </label>
               <label  className={style.inputField}>
-                Місто
+                {transationHook("city")}
                 <input
                   type="text"
                   value={city}
@@ -126,7 +130,7 @@ class PhonebookEditor extends Component {
                 />
               </label> 
               <label className={style.inputField}>
-                Спеціальність
+                {transationHook("profession")}
                 <input
               
                   type="text"
@@ -136,18 +140,21 @@ class PhonebookEditor extends Component {
                 />
               </label>
               <label className={style.inputField}>
-                Стать
-                <input
-                  type="text"
+                {transationHook("gender")}
+                <select
+                  type="select"
                   value={gender}
                   onChange={this.handleChange}
                   name="gender"
                   required
-                />
+                >
+                  <option value={"male"}> {transationHook("male")}</option>
+                  <option value={"female"}> {transationHook("female")}</option>
+                </select>
               </label>
            </div>
             <button className={style.buttonAdd} type="submit">
-              Додати контакт
+              {transationHook("addContact")}
             </button>
           </form>
         </div>
@@ -174,4 +181,4 @@ const MapDispatchToProps = {
   onFetchContacts: ContactsOperations.fetchContacts,
   onGetUser: UserOperation.getUser,
 };
-export default connect(MapStateToProps, MapDispatchToProps)(PhonebookEditor);
+export default connect(MapStateToProps, MapDispatchToProps)(withTranslation(PhonebookEditor));
