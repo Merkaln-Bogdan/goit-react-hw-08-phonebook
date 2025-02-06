@@ -24,6 +24,7 @@ import Wrapper from "./components/Wrapper";
 class App extends Component {
 
   componentDidMount() {
+    this.props.onGetInfoApp()
     this.props.onGetUser();
   }
 
@@ -97,6 +98,8 @@ const MapStateToProps = (state) => ({
 
 const MapDispatchToProps = {
   onGetUser: UserOperations.getUser,
+  onGetInfoApp: UserOperations.getInfoPage,
+
 };
 
 export default connect(MapStateToProps, MapDispatchToProps)(App);

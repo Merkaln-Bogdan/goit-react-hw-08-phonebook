@@ -24,20 +24,19 @@ class LoginForm extends Component {
     display: "block",
     margin: "0 auto 20px"
   };
-
   
   getNofication = (type, message) => {
     this.setState({...this.state, unathourize: false, loading: false})
     if(type==='auth'){
-      return NotificationManager.warning('Невірні дані', 'Помилка');
+      return NotificationManager.warning('Authorization error', 'Error');
     }
     else {
-      return NotificationManager.error(message, 'Помилка');
+      return NotificationManager.error(message, 'Error');
     }
   }
  
   componentDidUpdate(prevProps) {
-    if(this.props?.error !== prevProps.error){
+    if(this.props.error && this.props?.error !== prevProps.error){
       if(this.props?.error?.includes('401')){
         return this.getNofication('auth')
       }else{
@@ -110,7 +109,7 @@ class LoginForm extends Component {
                 variant="primary"
                 type="button"
                 onClick={this.handleSubmit}
-                disabled={loading}
+                disabled={loading || (!password && !email)}
               >
                 {transationHook("signIn")}
               </Button>

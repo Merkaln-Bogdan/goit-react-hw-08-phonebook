@@ -1,8 +1,12 @@
-export const LANGUAGES = [
-  { label: "Українська", code: "ua" , flag: "🇺🇦" },
-  { label: "English", code: "en", flag: "🇬🇧"},
-  { label: "Русский", code: "ru", flag: "🇷🇺" },
-]
+import React from "react"
+import {RuFlag, UaFlag, UkFlag} from "../assets/svg/flags"
+
+export const LANGUAGES = {
+  ua: { label: <UaFlag/>, value: "ua" , name: "Українська"},
+  ru: { label: <RuFlag/>, value: "ru", name: "Русский"},
+  en: { label:  <UkFlag/>, value: "en", name: "English"}
+
+}
 
 const rus = {
   home: "Главная",

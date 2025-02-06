@@ -25,6 +25,7 @@ const token = createReducer(null, {
   [TaskPhonebook.logoutSuccess]: () => null,
 });
 const error = createReducer(null, {
+  [TaskPhonebook.loginRequest]: () => null,
   [TaskPhonebook.registersError]: (_, { payload }) => payload,
   [TaskPhonebook.loginError]: (_, { payload }) => payload,
   [TaskPhonebook.logoutError]: (_, { payload }) => payload,
@@ -37,6 +38,7 @@ const loader = createReducer(loading, {
   [TaskPhonebook.getUserUpdateRequest]: () => true,
   [TaskPhonebook.getContactRequest]: () => true,
   [TaskPhonebook.loginRequest]: () => true,
+  [TaskPhonebook.loginError]: () => false,
   [TaskPhonebook.getCurrentUserSuccess]: () => false,
   [TaskPhonebook.getContactSuccess]: () => false,
   [TaskPhonebook.getUserUpdateSuccess]: () => true,

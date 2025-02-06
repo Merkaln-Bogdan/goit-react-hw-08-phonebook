@@ -1,9 +1,8 @@
 import TaskPhoneBook from "../TaskPhonebook";
 import Axios from "axios";
 
-// Axios.defaults.baseURL = "https://phonebook-app-pearl.vercel.app";
-
 Axios.defaults.baseURL = "https://phonebook-api-v2.onrender.com";
+
 
 const Token = (token) => {
   Axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -24,11 +23,9 @@ const registration = (user) => (dispatch) => {
 };
 
 const loginUser = (user) => (dispatch) => {
-  console.log(user)
   dispatch(TaskPhoneBook.loginRequest());
   Axios.post("/auth/signin", user)
       .then((response) => {
-        console.log(response.data)
         Token(response.data.token);
         dispatch(TaskPhoneBook.loginSuccess({ ...response.data }));
       })
@@ -39,7 +36,7 @@ const loginUser = (user) => (dispatch) => {
 
 const getUser = () => (dispatch, getState) => {
   const { auth: { token: persistedtoken } } = getState();
-
+  
   if (!persistedtoken) {
     return;
   }
@@ -100,11 +97,29 @@ const getUpdateCurrentUser = (user) => (dispatch) => {
       });  
 };
 
+
+
+const getInfoPage = () => (dispatch, getState) => {
+
+  dispatch(TaskPhoneBook.getInfoAppRequest());
+
+  Axios.get("/")
+    .then((res) => {
+      dispatch(TaskPhoneBook.getInfoAppSuccess(res.data));
+    })
+    .catch((error) => {
+        tokenUnset();
+        dispatch(TaskPhoneBook.getInfoAppError());
+      }
+    );
+};
+
 export default {
   registration,
   loginUser,
   getUser,
   logOutUser,
   createUserAvatar,
-  getUpdateCurrentUser
+  getUpdateCurrentUser,
+  getInfoPage
 };

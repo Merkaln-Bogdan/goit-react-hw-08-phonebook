@@ -1,6 +1,6 @@
 .language {
     height: fit-content;
     border: none; 
-    background: transparent;
+    background: inherit;
     color: #ffffff;
   }

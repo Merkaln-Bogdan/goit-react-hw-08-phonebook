@@ -1,8 +1,7 @@
 .navigation {
     display: flex;
-    justify-content: space-around;
     align-items: center;
-    width: 55%;
+    justify-content: center;
     margin: 0 auto;
     margin-bottom: 20px;
     padding: 10px 0;
@@ -13,6 +12,8 @@
     .navigation {
       width: 100%;
       display: flex;
+      justify-content: space-around;
+      align-items: baseline;
       font-size: 18px;
     }
   }

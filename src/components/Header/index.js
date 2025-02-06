@@ -11,9 +11,14 @@ import UserMenu from "../UserMenu";
 
 
 class Header extends Component {
+    state = {
+        language: 'ua'
+      };
    
     handleChangeLanguageApp = (e) => {
-        const {value} = e.target;
+        const {value} = e;
+      
+        this.setState({language: value})
         localStorage.setItem("lang", value)
         i18n.changeLanguage(value)
         const {isAuthenticated, user} = this.props
@@ -30,10 +35,11 @@ class Header extends Component {
       }
 
     render(){
-        const {isAuthenticated, user, transationHook} = this.props
+        const {isAuthenticated, user, transationHook} = this.props;
+        
         return (
             <div className={style.navigation}>
-                <LanguageNav lang={user.lang} handleChangeLanguageApp={this.handleChangeLanguageApp}/>
+                <LanguageNav lang={user.lang || this.state.language} handleChangeLanguageApp={this.handleChangeLanguageApp}/>
             
                 <Navigation transationHook={transationHook}/>
                 {isAuthenticated && 

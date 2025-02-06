@@ -43,6 +43,10 @@ const changePhotoContactRequest = createAction("contacts/changePhotoContactReque
 const changePhotoContactSuccess = createAction("contacts/changePhotoContactSuccess");
 const changePhotoContactError = createAction("contacts/changePhotoContactError");
 
+const getInfoAppRequest = createAction("user/getInfoAppReques");
+const getInfoAppSuccess = createAction("user/getInfoAppSuccess");
+const getInfoAppError = createAction("user/getInfoAppError");
+
 const changeFilter = createAction("contacts/filter");
 
 export default {
@@ -79,5 +83,8 @@ export default {
   changePhotoContactError,
   getUserUpdateRequest,
   getUserUpdateSuccess,
-  getUserUpdateError
+  getUserUpdateError,
+  getInfoAppRequest,
+  getInfoAppSuccess,
+  getInfoAppError,
 };
