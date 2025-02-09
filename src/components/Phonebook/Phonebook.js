@@ -18,7 +18,6 @@ function Phonebook({ contacts, value, onRemovePersonData, transationHook }) {
 
   return (
     <div className={style.wrapper}>
-      
         <CSSTransition
           in
           appear
@@ -57,6 +56,7 @@ function Phonebook({ contacts, value, onRemovePersonData, transationHook }) {
                   <>Loading</>
                 ) : (
                   <PhonebookListItem
+                    key={contact._id}
                     contact={contact}
                     onRemovePersonData={() => onRemovePersonData(contact._id)}
                   />

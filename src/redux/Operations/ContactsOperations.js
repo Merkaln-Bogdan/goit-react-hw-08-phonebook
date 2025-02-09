@@ -34,6 +34,7 @@ const removeContact = (id) => (dispatch) => {
 };
 
 const changePhotoContact = (file, id) => (dispatch) => {
+  
   const formData = new FormData();
 
   formData.append("profile", file);

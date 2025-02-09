@@ -12,11 +12,11 @@ class item extends Component {
     super();
     this.infoList = [
       {key: "Phone number", value: "number"},
-      {key: "Email", value: "email"},
       {key: "City", value: "city"},
       {key: "Profession", value: "profession"},
       {key: "Gender", value: "gender"},
       {key: "Email", value: "email"},
+      
     ]
   }
   state = { 
@@ -89,7 +89,7 @@ class item extends Component {
                   onLoad={this.handleLoadImage} 
                   src={image || previewImage || camera} alt="Card_cap"
                 />
-                  </div>
+              </div>
           
               {!image && 
                 <div>
@@ -102,7 +102,6 @@ class item extends Component {
                         title="Photo"
                         className={"mx-1"}
                       />
-
                   </label>
                 </div>
               }
@@ -115,8 +114,8 @@ class item extends Component {
             <div className={"card-body"}>
               <h5 className={"card-title font-weight-bold"}>{firstName} {lastName}</h5>
               {this.infoList.map(el => (
-                <span className={"d-flex justify-content-between"}>
-                  {el.key}: 
+                <span key={el.value} className={"d-flex justify-content-between"}>
+                  {el.key}:
                   <p className={"ml-2 font-weight-bold"}>
                     {this.state.contact[el.value]}
                   </p>

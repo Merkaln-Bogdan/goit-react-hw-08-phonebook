@@ -3,7 +3,6 @@ import Axios from "axios";
 
 Axios.defaults.baseURL = "https://phonebook-api-v2.onrender.com";
 
-
 const Token = (token) => {
   Axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
